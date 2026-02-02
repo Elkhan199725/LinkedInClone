@@ -1,0 +1,48 @@
+2026-02-02 15:25:02.481 +04:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2026-02-02 15:25:02.581 +04:00 [INF] System Initialized. LinkedInClone API is starting up...
+2026-02-02 15:25:02.894 +04:00 [INF] Now listening on: https://localhost:7041
+2026-02-02 15:25:02.902 +04:00 [INF] Now listening on: http://localhost:5204
+2026-02-02 15:25:02.997 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-02 15:25:03.000 +04:00 [INF] Hosting environment: Development
+2026-02-02 15:25:03.002 +04:00 [INF] Content root path: C:\Users\Asus\Desktop\LinkedInCore\Api
+2026-02-02 15:25:03.721 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger - null null
+2026-02-02 15:25:04.082 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger - 301 null null 371.0036ms
+2026-02-02 15:25:04.085 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-02-02 15:25:04.270 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 185.6349ms
+2026-02-02 15:25:04.312 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui.css - null null
+2026-02-02 15:25:04.314 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.css - null null
+2026-02-02 15:25:04.314 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui-bundle.js - null null
+2026-02-02 15:25:04.314 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui-standalone-preset.js - null null
+2026-02-02 15:25:04.315 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-02 15:25:04.315 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.js - null null
+2026-02-02 15:25:04.389 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.css - 200 152 text/css 74.7257ms
+2026-02-02 15:25:04.404 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.js - 200 null application/javascript;charset=utf-8 88.5158ms
+2026-02-02 15:25:04.422 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 106.9083ms
+2026-02-02 15:25:04.426 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui.css - 200 26248 text/css 113.7762ms
+2026-02-02 15:25:04.433 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui-standalone-preset.js - 200 77848 text/javascript 118.3283ms
+2026-02-02 15:25:04.440 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui-bundle.js - 200 424871 text/javascript 125.5189ms
+2026-02-02 15:25:04.450 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-02-02 15:25:04.663 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 212.5294ms
+2026-02-02 15:25:04.771 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-02-02 15:25:04.796 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/favicon-32x32.png - null null
+2026-02-02 15:25:04.806 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 35.0078ms
+2026-02-02 15:25:04.815 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/favicon-32x32.png - 200 628 image/png 18.8592ms
+2026-02-02 15:25:21.040 +04:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2026-02-02 15:25:21.083 +04:00 [INF] System Initialized. LinkedInClone API is starting up...
+2026-02-02 15:25:21.178 +04:00 [INF] Now listening on: https://localhost:7041
+2026-02-02 15:25:21.182 +04:00 [INF] Now listening on: http://localhost:5204
+2026-02-02 15:25:21.223 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-02-02 15:25:21.226 +04:00 [INF] Hosting environment: Development
+2026-02-02 15:25:21.229 +04:00 [INF] Content root path: C:\Users\Asus\Desktop\LinkedInCore\Api
+2026-02-02 15:25:21.367 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-02-02 15:25:21.487 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 120.8925ms
+2026-02-02 15:25:21.596 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-02-02 15:25:21.615 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16491 application/javascript; charset=utf-8 18.9626ms
+2026-02-02 15:25:21.626 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-02-02 15:25:21.660 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.6257ms
+2026-02-02 15:25:21.946 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-02-02 15:25:21.962 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.9535ms
+2026-02-02 15:34:57.089 +04:00 [INF] Application is shutting down...
+2026-02-02 20:33:29.660 +04:00 [INF] LinkedInClone API started successfully
+2026-02-02 20:33:31.154 +04:00 [INF] HTTP GET /swagger responded 301 in 20.8330 ms
+2026-02-02 20:33:31.530 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 13.9131 ms
