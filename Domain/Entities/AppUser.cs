@@ -2,18 +2,11 @@
 
 namespace Domain.Entities;
 
+/// <summary>
+/// Identity-only user entity. Profile data is stored in UserProfile.
+/// </summary>
 public class AppUser : IdentityUser<Guid>
 {
-    public string FirstName { get; set; } = null!;
-    public string LastName { get; set; } = null!;
-
-    public string? Headline { get; set; }
-    public string? About { get; set; }
-    public string? Location { get; set; }
-
-    public string? ProfilePhotoUrl { get; set; }
-    public string? CoverPhotoUrl { get; set; }
-
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; set; }
 }

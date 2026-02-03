@@ -1,5 +1,9 @@
-﻿using Api.Security;
+﻿using Api.Middleware;
+using Api.Security;
+using Application;
+using Application.Common.Interfaces;
 using Domain.Entities;
+using Infrastructure;
 using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -26,6 +30,8 @@ var jwtKey = jwtSection["Key"] ?? throw new InvalidOperationException("Jwt:Key m
 var issuer = jwtSection["Issuer"] ?? throw new InvalidOperationException("Jwt:Issuer missing");
 var audience = jwtSection["Audience"] ?? throw new InvalidOperationException("Jwt:Audience missing");
 
+Log.Information("Jwt:Key loaded with length {Length}", jwtKey.Length);
+
 if (jwtKey.Length < 32)
     throw new InvalidOperationException("Jwt:Key must be at least 32 characters.");
 
@@ -33,7 +39,14 @@ if (jwtKey.Length < 32)
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// JWT generator
+// Application Layer (MediatR, AutoMapper, FluentValidation)
+builder.Services.AddApplication();
+
+// Infrastructure Layer (Repositories)
+builder.Services.AddInfrastructure();
+
+// JWT Service (implements IJwtTokenService)
+builder.Services.AddScoped<IJwtTokenService, JwtTokenGenerator>();
 builder.Services.AddScoped<JwtTokenGenerator>();
 
 // Swagger + JWT auth in Swagger UI (Swashbuckle 10.x pattern)
@@ -122,13 +135,17 @@ builder.Services.AddAuthorization();
 // -------------------- App --------------------
 var app = builder.Build();
 
-// Seed Roles + SuperAdmin
+// Seed Roles + SuperAdmin + UserProfile
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
-    await IdentitySeeder.SeedAsync(roleManager, userManager, app.Configuration);
+    var profileRepository = scope.ServiceProvider.GetRequiredService<IUserProfileRepository>();
+    await IdentitySeeder.SeedAsync(roleManager, userManager, profileRepository, app.Configuration);
 }
+
+// Global Exception Handling (must be early in pipeline)
+app.UseExceptionHandling();
 
 // Request logging
 app.UseSerilogRequestLogging();

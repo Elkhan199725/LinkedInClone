@@ -48,50 +48,72 @@ A professional **LinkedIn-style social networking API** built with **.NET 10** a
 | Logging | Serilog |
 | Architecture | Clean Architecture |
 
+
 ---
 
 ## ?? Project Structure
 
 ```
 LinkedInClone/
-??? Api/                          # Presentation Layer
-?   ??? Controllers/              # API Controllers
-?   ?   ??? AuthController.cs     # Registration & Login
-?   ?   ??? MeController.cs       # Current user profile
-?   ?   ??? AdminController.cs    # Admin operations
+??? Api/                              # Presentation Layer
+?   ??? Controllers/
+?   ?   ??? AuthController.cs         # Registration & Login (MediatR)
+?   ?   ??? ProfileController.cs      # Profile CRUD (MediatR)
+?   ?   ??? MeController.cs           # Current user info
+?   ?   ??? AdminController.cs        # Admin operations
+?   ??? Middleware/
+?   ?   ??? ExceptionHandlingMiddleware.cs
 ?   ??? Security/
-?   ?   ??? JwtTokenGenerator.cs  # JWT token generation
-?   ??? Program.cs                # Application entry point
-?   ??? appsettings.json          # Configuration (template)
-?   ??? appsettings.Development.json  # Dev secrets (git-ignored)
+?   ?   ??? JwtTokenGenerator.cs      # JWT token generation
+?   ??? Program.cs                    # DI configuration
 ?
-??? Application/                  # Application Layer
-?   ??? (Future: Use cases, DTOs, Interfaces)
+??? Application/                      # Business Logic Layer
+?   ??? Auth/
+?   ?   ??? Commands/                 # RegisterCommand, LoginCommand
+?   ?   ??? Handlers/                 # Command handlers
+?   ?   ??? Dtos/                     # Request/Response DTOs
+?   ?   ??? Validators/               # FluentValidation
+?   ??? Profiles/
+?   ?   ??? Commands/                 # UpdateMyProfileCommand
+?   ?   ??? Queries/                  # GetMyProfile, GetPublicProfile
+?   ?   ??? Handlers/                 # Query/Command handlers
+?   ?   ??? Dtos/                     # Profile DTOs
+?   ?   ??? Validators/               # Profile validation
+?   ?   ??? Mapping/                  # AutoMapper profiles
+?   ??? Common/
+?       ??? Interfaces/               # IBaseRepository, IUserProfileRepository
+?       ??? Exceptions/               # Custom exceptions
+?       ??? Behaviors/                # MediatR pipeline behaviors
 ?
-??? Infrastructure/               # Infrastructure Layer
+??? Infrastructure/                   # Data Access Layer
 ?   ??? Persistence/
 ?   ?   ??? ApplicationDbContext.cs
-?   ?   ??? IdentitySeeder.cs     # Role & admin seeding
-?   ?   ??? Configurations/       # EF Core configurations
-?   ??? Migrations/               # EF Core migrations
+?   ?   ??? IdentitySeeder.cs         # Role & admin seeding
+?   ?   ??? Configurations/           # EF Fluent API configs
+?   ?   ??? Repositories/             # Repository implementations
+?   ??? Migrations/                   # EF Core migrations
 ?
-??? Domain/                       # Domain Layer
+??? Domain/                           # Core Domain Layer
 ?   ??? Entities/
-?   ?   ??? AppUser.cs            # User entity
+?   ?   ??? AppUser.cs                # Identity-only user
+?   ?   ??? UserProfile.cs            # Profile data (shared PK)
 ?   ??? Constants/
-?       ??? AppRoles.cs           # Role definitions
+?       ??? AppRoles.cs               # Role definitions
 ?
 ??? README.md
+??? ARCHITECTURE.md                   # Detailed architecture docs
 ```
+
+> ?? **For detailed architecture documentation**, see **[ARCHITECTURE.md](ARCHITECTURE.md)**
 
 ### Layer Responsibilities
 
 | Layer | Responsibility |
 |-------|----------------|
-| **Api** | HTTP handling, controllers, middleware, DI configuration |
-| **Application** | Business logic, use cases, DTOs, interfaces |
-| **Infrastructure** | Data access, external services, EF Core, Identity |
-| **Domain** | Entities, constants, domain logic (no dependencies) |
+| **Api** | HTTP handling, thin controllers (MediatR only), middleware |
+| **Application** | CQRS commands/queries, handlers, DTOs, validators, interfaces |
+| **Infrastructure** | EF Core, repositories, Identity, external services |
+| **Domain** | Entities, constants, domain logic (zero dependencies) |
 
 ---
 

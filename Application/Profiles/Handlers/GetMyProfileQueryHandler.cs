@@ -1,0 +1,32 @@
+using Application.Common.Exceptions;
+using Application.Common.Interfaces;
+using Application.Profiles.Dtos;
+using Application.Profiles.Queries;
+using AutoMapper;
+using Domain.Entities;
+using MediatR;
+
+namespace Application.Profiles.Handlers;
+
+public sealed class GetMyProfileQueryHandler : IRequestHandler<GetMyProfileQuery, MyProfileResponse>
+{
+    private readonly IUserProfileRepository _repository;
+    private readonly IMapper _mapper;
+
+    public GetMyProfileQueryHandler(IUserProfileRepository repository, IMapper mapper)
+    {
+        _repository = repository;
+        _mapper = mapper;
+    }
+
+    public async Task<MyProfileResponse> Handle(GetMyProfileQuery request, CancellationToken cancellationToken)
+    {
+        // AppUserId IS the primary key now (shared PK pattern)
+        var profile = await _repository.GetByIdAsync(request.AppUserId, cancellationToken);
+
+        if (profile is null)
+            throw new NotFoundException(nameof(UserProfile), request.AppUserId);
+
+        return _mapper.Map<MyProfileResponse>(profile);
+    }
+}

@@ -1,4 +1,4 @@
-using Domain.Entities;
+    using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +11,8 @@ public sealed class ApplicationDbContext : IdentityDbContext<AppUser, IdentityRo
         : base(options)
     {
     }
+
+    public DbSet<UserProfile> UserProfiles => Set<UserProfile>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

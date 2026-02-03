@@ -1,4 +1,5 @@
-﻿using Domain.Constants;
+﻿using Application.Common.Interfaces;
+using Domain.Constants;
 using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,7 @@ public static class IdentitySeeder
     public static async Task SeedAsync(
         RoleManager<IdentityRole<Guid>> roleManager,
         UserManager<AppUser> userManager,
+        IUserProfileRepository profileRepository,
         IConfiguration config)
     {
         // 1) Seed roles
@@ -36,19 +38,31 @@ public static class IdentitySeeder
         var user = await userManager.FindByEmailAsync(email);
         if (user is null)
         {
+            // Create identity user (no profile fields)
             user = new AppUser
             {
                 Id = Guid.NewGuid(),
                 Email = email,
                 UserName = email,
-                FirstName = seed["FirstName"]?.Trim() ?? "Super",
-                LastName = seed["LastName"]?.Trim() ?? "Admin",
                 CreatedAt = DateTime.UtcNow
             };
 
             var created = await userManager.CreateAsync(user, password);
             if (!created.Succeeded)
                 throw new InvalidOperationException($"Failed to create seeded SuperAdmin user '{email}': {FormatErrors(created.Errors)}");
+
+            // Create UserProfile for the seeded admin
+            var profile = new UserProfile
+            {
+                AppUserId = user.Id,
+                FirstName = seed["FirstName"]?.Trim() ?? "Super",
+                LastName = seed["LastName"]?.Trim() ?? "Admin",
+                IsPublic = true,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            await profileRepository.AddAsync(profile);
+            await profileRepository.SaveChangesAsync();
         }
 
         // Ensure SuperAdmin role exists on this user

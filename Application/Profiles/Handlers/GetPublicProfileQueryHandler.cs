@@ -1,0 +1,35 @@
+using Application.Common.Exceptions;
+using Application.Common.Interfaces;
+using Application.Profiles.Dtos;
+using Application.Profiles.Queries;
+using AutoMapper;
+using Domain.Entities;
+using MediatR;
+
+namespace Application.Profiles.Handlers;
+
+public sealed class GetPublicProfileQueryHandler : IRequestHandler<GetPublicProfileQuery, PublicProfileResponse>
+{
+    private readonly IUserProfileRepository _repository;
+    private readonly IMapper _mapper;
+
+    public GetPublicProfileQueryHandler(IUserProfileRepository repository, IMapper mapper)
+    {
+        _repository = repository;
+        _mapper = mapper;
+    }
+
+    public async Task<PublicProfileResponse> Handle(GetPublicProfileQuery request, CancellationToken cancellationToken)
+    {
+        // AppUserId IS the primary key now (shared PK pattern)
+        var profile = await _repository.GetByIdAsync(request.AppUserId, cancellationToken);
+
+        if (profile is null)
+            throw new NotFoundException($"Profile for user '{request.AppUserId}' was not found.");
+
+        if (!profile.IsPublic)
+            throw new NotFoundException($"Profile for user '{request.AppUserId}' is not public.");
+
+        return _mapper.Map<PublicProfileResponse>(profile);
+    }
+}

@@ -1,0 +1,64 @@
+using Application.Profiles.Commands;
+using Application.Profiles.Dtos;
+using Application.Profiles.Queries;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+namespace Api.Controllers;
+
+[ApiController]
+[Route("api/profile")]
+public sealed class ProfileController : ControllerBase
+{
+    private readonly IMediator _mediator;
+
+    public ProfileController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
+    [Authorize]
+    [HttpGet("me")]
+    public async Task<ActionResult<MyProfileResponse>> GetMyProfile(CancellationToken cancellationToken)
+    {
+        if (!TryGetCurrentUserId(out var appUserId))
+            return Unauthorized();
+
+        var result = await _mediator.Send(new GetMyProfileQuery(appUserId), cancellationToken);
+        return Ok(result);
+    }
+
+    [Authorize]
+    [HttpPut("me")]
+    public async Task<ActionResult<MyProfileResponse>> UpdateMyProfile(
+        [FromBody] UpdateMyProfileRequest request,
+        CancellationToken cancellationToken)
+    {
+        if (!TryGetCurrentUserId(out var appUserId))
+            return Unauthorized();
+
+        var result = await _mediator.Send(new UpdateMyProfileCommand(appUserId, request), cancellationToken);
+        return Ok(result);
+    }
+
+    [AllowAnonymous]
+    [HttpGet("{userId:guid}")]
+    public async Task<ActionResult<PublicProfileResponse>> GetPublicProfile(
+        Guid userId,
+        CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new GetPublicProfileQuery(userId), cancellationToken);
+        return Ok(result);
+    }
+
+    private bool TryGetCurrentUserId(out Guid userId)
+    {
+        userId = default;
+
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        return !string.IsNullOrWhiteSpace(userIdClaim)
+            && Guid.TryParse(userIdClaim, out userId);
+    }
+}

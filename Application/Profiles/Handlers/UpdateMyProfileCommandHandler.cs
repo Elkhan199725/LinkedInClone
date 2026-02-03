@@ -1,0 +1,54 @@
+using Application.Common.Interfaces;
+using Application.Profiles.Commands;
+using Application.Profiles.Dtos;
+using AutoMapper;
+using Domain.Entities;
+using MediatR;
+
+namespace Application.Profiles.Handlers;
+
+public sealed class UpdateMyProfileCommandHandler : IRequestHandler<UpdateMyProfileCommand, MyProfileResponse>
+{
+    private readonly IUserProfileRepository _repository;
+    private readonly IMapper _mapper;
+
+    public UpdateMyProfileCommandHandler(IUserProfileRepository repository, IMapper mapper)
+    {
+        _repository = repository;
+        _mapper = mapper;
+    }
+
+    public async Task<MyProfileResponse> Handle(UpdateMyProfileCommand command, CancellationToken cancellationToken)
+    {
+        // AppUserId IS the primary key now (shared PK pattern)
+        var profile = await _repository.GetByIdAsync(command.AppUserId, cancellationToken);
+
+        if (profile is null)
+        {
+            // Create new profile with AppUserId as PK
+            profile = new UserProfile
+            {
+                AppUserId = command.AppUserId,
+                IsPublic = true,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            // Map request fields to new entity
+            _mapper.Map(command.Request, profile);
+
+            await _repository.AddAsync(profile, cancellationToken);
+        }
+        else
+        {
+            // Update existing profile
+            _mapper.Map(command.Request, profile);
+            profile.UpdatedAt = DateTime.UtcNow;
+
+            _repository.Update(profile);
+        }
+
+        await _repository.SaveChangesAsync(cancellationToken);
+
+        return _mapper.Map<MyProfileResponse>(profile);
+    }
+}
