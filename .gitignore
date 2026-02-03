@@ -1,0 +1,233 @@
+# ===================================
+# .NET / ASP.NET Core / Visual Studio
+# ===================================
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache/options
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.ipdb
+*.pch
+*.pgc
+*.pgd
+
+# NuGet packages
+*.nupkg
+*.snupkg
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# StyleCop
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.tlb
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.tlog
+*.FileListAbsolute.txt
+*.log
+*.vspscc
+*.vssscc
+
+# Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+TestResult.xml
+nunit-*.xml
+
+# NCrunch
+*.ncrunch*
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# CodeRush personal settings
+.cr/
+
+# Python tools
+__pycache__/
+*.pyc
+
+# Web workbench (Sass)
+.sass-cache/
+
+# Installshield output
+[Ee]xpress/
+
+# DocProject
+DocProject/buildhelp/
+DocProject/Help/*.HxT
+DocProject/Help/*.HxC
+DocProject/Help/*.hhc
+DocProject/Help/*.hhk
+DocProject/Help/*.hhp
+DocProject/Help/Html2
+DocProject/Help/html
+
+# Click-Once directory
+publish/
+
+# Publish Web Output
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
+
+# Microsoft Azure web app publish settings
+PublishScripts/
+
+# NuGet
+*.nupkg
+packages/
+!packages/repositories.config
+
+# Service Fabric build output
+*.sfpkg
+
+# ===================================
+# ASP.NET Core / Entity Framework Core
+# ===================================
+
+# User secrets
+secrets.json
+
+# Serilog log files
+Logs/
+*.log
+
+# EF Core migrations designer
+*.Designer.cs.bak
+
+# ===================================
+# Environment / Configuration
+# ===================================
+
+# Development settings (contains secrets)
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.json
+!appsettings.json
+
+# User secrets path (alternative to above)
+.usersecrets/
+
+# Environment files
+.env
+.env.*
+*.env
+
+# ===================================
+# Docker
+# ===================================
+
+# Docker files that might contain secrets
+docker-compose.override.yml
+docker-compose.*.yml
+!docker-compose.yml
+
+# ===================================
+# IDE / Editor
+# ===================================
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+*~
+
+# ===================================
+# OS generated files
+# ===================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+
+# ===================================
+# Misc
+# ===================================
+
+# MiniProfiler
+App_Data/
+
+# Temporary ASP.NET files
+**/[Aa]pp_[Dd]ata/
+
+# Health monitoring
+healthchecksdb
+
+# BenchmarkDotNet artifacts
+BenchmarkDotNet.Artifacts/
+
+# Coverlet coverage
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# Local tool manifest
+.config/dotnet-tools.json

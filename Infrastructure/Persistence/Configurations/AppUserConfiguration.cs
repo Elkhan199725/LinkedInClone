@@ -1,13 +1,10 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infrastructure.Persistence.Configurations;
 
-public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
+public sealed class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
 {
     public void Configure(EntityTypeBuilder<AppUser> builder)
     {
@@ -22,6 +19,9 @@ public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
         builder.Property(x => x.Headline)
             .HasMaxLength(200);
 
+        builder.Property(x => x.About)
+            .HasMaxLength(2000);
+
         builder.Property(x => x.Location)
             .HasMaxLength(200);
 
@@ -30,5 +30,9 @@ public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
 
         builder.Property(x => x.CoverPhotoUrl)
             .HasMaxLength(500);
+
+        // Helpful indexes for common queries/sorts
+        builder.HasIndex(x => x.CreatedAt);
+        builder.HasIndex(x => x.Location);
     }
 }

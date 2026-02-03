@@ -16,7 +16,10 @@
 /mnt/c/Users/Asus/Desktop/LinkedInCore/Infrastructure/obj/Debug/net10.0/refint/Infrastructure.dll
 /mnt/c/Users/Asus/Desktop/LinkedInCore/Infrastructure/obj/Debug/net10.0/Infrastructure.pdb
 /mnt/c/Users/Asus/Desktop/LinkedInCore/Infrastructure/obj/Debug/net10.0/ref/Infrastructure.dll
+/mnt/c/Users/Asus/Desktop/LinkedInCore/Infrastructure/bin/Debug/net10.0/Infrastructure.runtimeconfig.json
+/mnt/c/Users/Asus/Desktop/LinkedInCore/Infrastructure/obj/Debug/net10.0/Infrastructure.genruntimeconfig.cache
 C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\bin\Debug\net10.0\Infrastructure.deps.json
+C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\bin\Debug\net10.0\Infrastructure.runtimeconfig.json
 C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\bin\Debug\net10.0\Infrastructure.dll
 C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\bin\Debug\net10.0\Infrastructure.pdb
 C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\bin\Debug\net10.0\Application.dll
@@ -33,6 +36,5 @@ C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\obj\Debug\net10.0\Infrastr.15E
 C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\obj\Debug\net10.0\Infrastructure.dll
 C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\obj\Debug\net10.0\refint\Infrastructure.dll
 C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\obj\Debug\net10.0\Infrastructure.pdb
-C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\obj\Debug\net10.0\ref\Infrastructure.dll
-C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\bin\Debug\net10.0\Infrastructure.runtimeconfig.json
 C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\obj\Debug\net10.0\Infrastructure.genruntimeconfig.cache
+C:\Users\Asus\Desktop\LinkedInCore\Infrastructure\obj\Debug\net10.0\ref\Infrastructure.dll
