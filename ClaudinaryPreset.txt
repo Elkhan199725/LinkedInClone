@@ -1,0 +1,183 @@
+✅ Cloudinary Presets — FINAL AGREED SETUP (SUMMARY)
+
+We decided to use frontend-only uploads with Cloudinary unsigned presets.
+The backend never handles files, it only stores the returned URLs.
+
+🖼️ 1) Profile Images
+
+Preset name
+
+linkedin_profile_unsigned
+
+
+Purpose
+
+Profile photo
+
+Cover photo
+
+Preset settings
+
+Signing mode: Unsigned
+
+Asset folder:
+
+linkedinclone/profile
+
+
+Allowed formats:
+
+jpg,jpeg,png,webp
+
+
+Notes
+
+Images only
+
+No video
+
+No transformations
+
+Public delivery
+
+🖼️ 2) Post Images
+
+Preset name
+
+linkedin_post_image_unsigned
+
+
+Purpose
+
+Images attached to posts
+
+Preset settings
+
+Signing mode: Unsigned
+
+Asset folder:
+
+linkedinclone/posts/images
+
+
+Allowed formats:
+
+jpg,jpeg,png,webp
+
+🎥 3) Post Videos
+
+Preset name
+
+linkedin_post_video_unsigned
+
+
+Purpose
+
+Videos attached to posts
+
+Preset settings
+
+Signing mode: Unsigned
+
+Asset folder:
+
+linkedinclone/posts/videos
+
+
+Allowed formats:
+
+mp4,webm
+
+
+(mov optional later)
+
+Notes
+
+Separate from images
+
+Used only for post videos
+
+📄 4) Documents (CV / Resume)
+
+Preset name
+
+linkedin_docs_unsigned
+
+
+Purpose
+
+CV / Resume uploads (LinkedIn-style)
+
+Preset settings
+
+Signing mode: Unsigned
+
+Asset folder:
+
+linkedinclone/docs
+
+
+Allowed formats:
+
+pdf,doc,docx
+
+🧠 Important Rules We Agreed On
+1️⃣ No endpoints configured in Cloudinary UI
+
+Presets = rules only
+
+Endpoints are chosen later in frontend code
+
+Nothing about endpoints is written in Cloudinary
+
+2️⃣ If file format is wrong
+
+Cloudinary rejects the upload
+
+File is not stored
+
+No backend impact
+
+Frontend receives error
+
+3️⃣ Security model
+
+Frontend uploads directly to Cloudinary
+
+Backend only accepts URLs from your Cloudinary domain
+
+No API secrets in frontend
+
+Unsigned presets only
+
+4️⃣ Free plan is fine
+
+Unlimited presets
+
+Costs only depend on storage/bandwidth
+
+Images + small videos are safe on free tier
+
+🔜 When we do frontend (later)
+
+We will:
+
+Use one upload function per type
+
+Pick preset based on file type
+
+Store returned secure_url in backend:
+
+UserProfile.ProfilePhotoUrl
+
+PostMedia.Url
+
+UserDocument.Url
+
+No backend refactor needed.
+
+When you come back and say something like
+
+“Let’s wire Cloudinary presets into React frontend”
+
+I’ll pick up exactly from here, using these preset names and rules.

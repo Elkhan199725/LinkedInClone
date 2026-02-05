@@ -5,6 +5,9 @@ namespace Application.Profiles.Validators;
 
 public sealed class UpdateMyProfileRequestValidator : AbstractValidator<UpdateMyProfileRequest>
 {
+    private const string CloudinaryDomain = "https://res.cloudinary.com/";
+    private const int MaxImageUrlLength = 500;
+
     public UpdateMyProfileRequestValidator()
     {
         RuleFor(x => x.FirstName)
@@ -28,22 +31,36 @@ public sealed class UpdateMyProfileRequestValidator : AbstractValidator<UpdateMy
             .When(x => !string.IsNullOrEmpty(x.Location));
 
         RuleFor(x => x.ProfilePhotoUrl)
-            .MaximumLength(300).WithMessage("Profile photo URL must not exceed 300 characters.")
-            .Must(BeAValidUrl).WithMessage("Profile photo URL must be a valid absolute URL.")
+            .MaximumLength(MaxImageUrlLength)
+                .WithMessage($"Profile photo URL must not exceed {MaxImageUrlLength} characters.")
+            .Must(BeAValidCloudinaryUrl)
+                .WithMessage($"Profile photo URL must be a valid HTTPS URL from Cloudinary ({CloudinaryDomain}).")
             .When(x => !string.IsNullOrEmpty(x.ProfilePhotoUrl));
 
         RuleFor(x => x.CoverPhotoUrl)
-            .MaximumLength(300).WithMessage("Cover photo URL must not exceed 300 characters.")
-            .Must(BeAValidUrl).WithMessage("Cover photo URL must be a valid absolute URL.")
+            .MaximumLength(MaxImageUrlLength)
+                .WithMessage($"Cover photo URL must not exceed {MaxImageUrlLength} characters.")
+            .Must(BeAValidCloudinaryUrl)
+                .WithMessage($"Cover photo URL must be a valid HTTPS URL from Cloudinary ({CloudinaryDomain}).")
             .When(x => !string.IsNullOrEmpty(x.CoverPhotoUrl));
     }
 
-    private static bool BeAValidUrl(string? url)
+    /// <summary>
+    /// Validates that the URL is a valid absolute HTTPS URL from Cloudinary's delivery domain.
+    /// </summary>
+    private static bool BeAValidCloudinaryUrl(string? url)
     {
         if (string.IsNullOrWhiteSpace(url))
             return true;
 
-        return Uri.TryCreate(url, UriKind.Absolute, out var result)
-               && (result.Scheme == Uri.UriSchemeHttp || result.Scheme == Uri.UriSchemeHttps);
+        // Must be a valid absolute URI with HTTPS scheme
+        if (!Uri.TryCreate(url, UriKind.Absolute, out var uri))
+            return false;
+
+        if (uri.Scheme != Uri.UriSchemeHttps)
+            return false;
+
+        // Must start with Cloudinary's delivery domain
+        return url.StartsWith(CloudinaryDomain, StringComparison.OrdinalIgnoreCase);
     }
 }
