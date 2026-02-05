@@ -1,4 +1,4 @@
-    using Domain.Entities;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +13,10 @@ public sealed class ApplicationDbContext : IdentityDbContext<AppUser, IdentityRo
     }
 
     public DbSet<UserProfile> UserProfiles => Set<UserProfile>();
+    public DbSet<Post> Posts => Set<Post>();
+    public DbSet<PostMedia> PostMedia => Set<PostMedia>();
+    public DbSet<Reaction> Reactions => Set<Reaction>();
+    public DbSet<Comment> Comments => Set<Comment>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

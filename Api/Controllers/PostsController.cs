@@ -1,0 +1,188 @@
+using Application.Posts.Commands;
+using Application.Posts.Dtos;
+using Application.Posts.Queries;
+using Domain.Enums;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+namespace Api.Controllers;
+
+[ApiController]
+[Route("api/posts")]
+public sealed class PostsController : ControllerBase
+{
+    private readonly IMediator _mediator;
+
+    public PostsController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
+    /// <summary>
+    /// Creates a new post.
+    /// </summary>
+    [HttpPost]
+    [Authorize]
+    public async Task<ActionResult<PostResponse>> CreatePost(
+        [FromBody] CreatePostRequest request,
+        CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        var result = await _mediator.Send(new CreatePostCommand(userId, request), cancellationToken);
+        return CreatedAtAction(nameof(GetPost), new { postId = result.Id }, result);
+    }
+
+    /// <summary>
+    /// Gets a post by ID.
+    /// </summary>
+    [HttpGet("{postId:guid}")]
+    [AllowAnonymous]
+    public async Task<ActionResult<PostResponse>> GetPost(
+        Guid postId,
+        CancellationToken cancellationToken)
+    {
+        var currentUserId = TryGetCurrentUserId();
+        var result = await _mediator.Send(new GetPostByIdQuery(postId, currentUserId), cancellationToken);
+        return Ok(result);
+    }
+
+    /// <summary>
+    /// Gets the current user's posts with pagination.
+    /// </summary>
+    [HttpGet("me")]
+    [Authorize]
+    public async Task<ActionResult<PostListResponse>> GetMyPosts(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 10,
+        CancellationToken cancellationToken = default)
+    {
+        var userId = GetCurrentUserId();
+        var result = await _mediator.Send(new GetMyPostsQuery(userId, page, pageSize), cancellationToken);
+        return Ok(result);
+    }
+
+    /// <summary>
+    /// Gets posts by a specific user.
+    /// </summary>
+    [HttpGet("user/{userId:guid}")]
+    [AllowAnonymous]
+    public async Task<ActionResult<PostListResponse>> GetUserPosts(
+        Guid userId,
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 10,
+        CancellationToken cancellationToken = default)
+    {
+        var result = await _mediator.Send(new GetMyPostsQuery(userId, page, pageSize), cancellationToken);
+        return Ok(result);
+    }
+
+    /// <summary>
+    /// Adds media to a post.
+    /// </summary>
+    [HttpPost("{postId:guid}/media")]
+    [Authorize]
+    public async Task<ActionResult<IReadOnlyList<PostMediaResponse>>> AddPostMedia(
+        Guid postId,
+        [FromBody] IReadOnlyList<AddPostMediaRequest> mediaItems,
+        CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        var result = await _mediator.Send(new AddPostMediaCommand(postId, userId, mediaItems), cancellationToken);
+        return Ok(result);
+    }
+
+    /// <summary>
+    /// Deletes a post.
+    /// </summary>
+    [HttpDelete("{postId:guid}")]
+    [Authorize]
+    public async Task<IActionResult> DeletePost(
+        Guid postId,
+        CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        await _mediator.Send(new DeletePostCommand(postId, userId), cancellationToken);
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Reacts to a post (like, celebrate, support, etc.). Creates or updates the reaction.
+    /// </summary>
+    [HttpPost("{postId:guid}/reactions")]
+    [Authorize]
+    public async Task<ActionResult<ReactionResponse>> ReactToPost(
+        Guid postId,
+        [FromBody] ReactToPostRequest request,
+        CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        var result = await _mediator.Send(new ReactToPostCommand(postId, userId, request.Type), cancellationToken);
+        return Ok(result);
+    }
+
+    /// <summary>
+    /// Removes the current user's reaction from a post.
+    /// </summary>
+    [HttpDelete("{postId:guid}/reactions")]
+    [Authorize]
+    public async Task<IActionResult> RemoveReaction(
+        Guid postId,
+        CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        await _mediator.Send(new RemoveReactionCommand(postId, userId), cancellationToken);
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Adds a comment to a post.
+    /// </summary>
+    [HttpPost("{postId:guid}/comments")]
+    [Authorize]
+    public async Task<ActionResult<CommentResponse>> AddComment(
+        Guid postId,
+        [FromBody] AddCommentRequest request,
+        CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        var result = await _mediator.Send(new AddCommentCommand(postId, userId, request), cancellationToken);
+        return CreatedAtAction(nameof(GetPostComments), new { postId }, result);
+    }
+
+    /// <summary>
+    /// Gets comments for a post with pagination.
+    /// </summary>
+    [HttpGet("{postId:guid}/comments")]
+    [AllowAnonymous]
+    public async Task<ActionResult<IReadOnlyList<CommentResponse>>> GetPostComments(
+        Guid postId,
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 20,
+        CancellationToken cancellationToken = default)
+    {
+        var result = await _mediator.Send(new GetPostCommentsQuery(postId, page, pageSize), cancellationToken);
+        return Ok(result);
+    }
+
+    private Guid GetCurrentUserId()
+    {
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            throw new UnauthorizedAccessException("Invalid or missing user identifier.");
+
+        return userId;
+    }
+
+    private Guid? TryGetCurrentUserId()
+    {
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            return null;
+
+        return userId;
+    }
+}

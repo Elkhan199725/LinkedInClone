@@ -1,0 +1,11 @@
+using Domain.Entities;
+
+namespace Application.Common.Interfaces;
+
+public interface ICommentRepository : IBaseRepository<Comment>
+{
+    /// <summary>
+    /// Gets comments for a post with pagination.
+    /// </summary>
+    Task<IReadOnlyList<Comment>> GetCommentsByPostAsync(Guid postId, int page, int pageSize, CancellationToken cancellationToken = default);
+}

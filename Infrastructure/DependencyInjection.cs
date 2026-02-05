@@ -13,6 +13,10 @@ public static class DependencyInjection
 
         // Register entity-specific repositories
         services.AddScoped<IUserProfileRepository, UserProfileRepository>();
+        services.AddScoped<IPostRepository, PostRepository>();
+        services.AddScoped<IPostMediaRepository, PostMediaRepository>();
+        services.AddScoped<IReactionRepository, ReactionRepository>();
+        services.AddScoped<ICommentRepository, CommentRepository>();
 
         return services;
     }
