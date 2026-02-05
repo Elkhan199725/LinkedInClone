@@ -3,43 +3,13 @@ using Domain.Enums;
 
 namespace Domain.Entities;
 
-/// <summary>
-/// Represents a user's post on the platform.
-/// </summary>
 public class Post : BaseEntity
 {
-    /// <summary>
-    /// The user who created this post (FK to AppUser.Id).
-    /// </summary>
     public Guid AuthorId { get; set; }
-
-    /// <summary>
-    /// Navigation property to the author.
-    /// </summary>
     public AppUser Author { get; set; } = null!;
-
-    /// <summary>
-    /// The text content of the post. Can be null if post only contains media.
-    /// </summary>
     public string? Text { get; set; }
-
-    /// <summary>
-    /// Who can see this post.
-    /// </summary>
     public PostVisibility Visibility { get; set; } = PostVisibility.Public;
-
-    /// <summary>
-    /// Media files attached to this post.
-    /// </summary>
     public ICollection<PostMedia> Media { get; set; } = new List<PostMedia>();
-
-    /// <summary>
-    /// Reactions on this post.
-    /// </summary>
     public ICollection<Reaction> Reactions { get; set; } = new List<Reaction>();
-
-    /// <summary>
-    /// Comments on this post.
-    /// </summary>
     public ICollection<Comment> Comments { get; set; } = new List<Comment>();
 }

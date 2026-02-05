@@ -1,8 +1,5 @@
 namespace Domain.Enums;
 
-/// <summary>
-/// Types of reactions users can add to posts.
-/// </summary>
 public enum ReactionType
 {
     Like = 0,

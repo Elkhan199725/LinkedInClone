@@ -20,9 +20,6 @@ public sealed class PostsController : ControllerBase
         _mediator = mediator;
     }
 
-    /// <summary>
-    /// Creates a new post.
-    /// </summary>
     [HttpPost]
     [Authorize]
     public async Task<ActionResult<PostResponse>> CreatePost(
@@ -34,9 +31,6 @@ public sealed class PostsController : ControllerBase
         return CreatedAtAction(nameof(GetPost), new { postId = result.Id }, result);
     }
 
-    /// <summary>
-    /// Gets a post by ID.
-    /// </summary>
     [HttpGet("{postId:guid}")]
     [AllowAnonymous]
     public async Task<ActionResult<PostResponse>> GetPost(
@@ -48,9 +42,6 @@ public sealed class PostsController : ControllerBase
         return Ok(result);
     }
 
-    /// <summary>
-    /// Gets the current user's posts with pagination.
-    /// </summary>
     [HttpGet("me")]
     [Authorize]
     public async Task<ActionResult<PostListResponse>> GetMyPosts(
@@ -63,9 +54,6 @@ public sealed class PostsController : ControllerBase
         return Ok(result);
     }
 
-    /// <summary>
-    /// Gets posts by a specific user.
-    /// </summary>
     [HttpGet("user/{userId:guid}")]
     [AllowAnonymous]
     public async Task<ActionResult<PostListResponse>> GetUserPosts(
@@ -78,9 +66,6 @@ public sealed class PostsController : ControllerBase
         return Ok(result);
     }
 
-    /// <summary>
-    /// Adds media to a post.
-    /// </summary>
     [HttpPost("{postId:guid}/media")]
     [Authorize]
     public async Task<ActionResult<IReadOnlyList<PostMediaResponse>>> AddPostMedia(
@@ -93,9 +78,6 @@ public sealed class PostsController : ControllerBase
         return Ok(result);
     }
 
-    /// <summary>
-    /// Deletes a post.
-    /// </summary>
     [HttpDelete("{postId:guid}")]
     [Authorize]
     public async Task<IActionResult> DeletePost(
@@ -107,9 +89,6 @@ public sealed class PostsController : ControllerBase
         return NoContent();
     }
 
-    /// <summary>
-    /// Reacts to a post (like, celebrate, support, etc.). Creates or updates the reaction.
-    /// </summary>
     [HttpPost("{postId:guid}/reactions")]
     [Authorize]
     public async Task<ActionResult<ReactionResponse>> ReactToPost(
@@ -122,9 +101,6 @@ public sealed class PostsController : ControllerBase
         return Ok(result);
     }
 
-    /// <summary>
-    /// Removes the current user's reaction from a post.
-    /// </summary>
     [HttpDelete("{postId:guid}/reactions")]
     [Authorize]
     public async Task<IActionResult> RemoveReaction(
@@ -136,9 +112,6 @@ public sealed class PostsController : ControllerBase
         return NoContent();
     }
 
-    /// <summary>
-    /// Adds a comment to a post.
-    /// </summary>
     [HttpPost("{postId:guid}/comments")]
     [Authorize]
     public async Task<ActionResult<CommentResponse>> AddComment(
@@ -151,9 +124,6 @@ public sealed class PostsController : ControllerBase
         return CreatedAtAction(nameof(GetPostComments), new { postId }, result);
     }
 
-    /// <summary>
-    /// Gets comments for a post with pagination.
-    /// </summary>
     [HttpGet("{postId:guid}/comments")]
     [AllowAnonymous]
     public async Task<ActionResult<IReadOnlyList<CommentResponse>>> GetPostComments(
@@ -169,20 +139,16 @@ public sealed class PostsController : ControllerBase
     private Guid GetCurrentUserId()
     {
         var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
         if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
             throw new UnauthorizedAccessException("Invalid or missing user identifier.");
-
         return userId;
     }
 
     private Guid? TryGetCurrentUserId()
     {
         var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
         if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
             return null;
-
         return userId;
     }
 }

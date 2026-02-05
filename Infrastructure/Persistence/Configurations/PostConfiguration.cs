@@ -22,16 +22,13 @@ public sealed class PostConfiguration : IEntityTypeConfiguration<Post>
         builder.Property(x => x.CreatedAt)
             .IsRequired();
 
-        // Relationship: Post -> AppUser (Author)
         builder.HasOne(x => x.Author)
             .WithMany()
             .HasForeignKey(x => x.AuthorId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Index for querying posts by author
         builder.HasIndex(x => x.AuthorId);
 
-        // Index for sorting by creation date
         builder.HasIndex(x => x.CreatedAt);
     }
 }

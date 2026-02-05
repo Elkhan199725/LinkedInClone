@@ -1,8 +1,5 @@
 namespace Domain.Enums;
 
-/// <summary>
-/// Type of media attached to a post.
-/// </summary>
 public enum PostMediaType
 {
     Image = 0,

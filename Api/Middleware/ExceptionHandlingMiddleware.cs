@@ -30,7 +30,6 @@ public sealed class ExceptionHandlingMiddleware
 
     private async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
-        // If the response already started, we can't reliably write our JSON error.
         if (context.Response.HasStarted)
         {
             _logger.LogWarning(
@@ -99,7 +98,6 @@ public sealed class ExceptionHandlingMiddleware
             )
         };
 
-        // Logging
         if (statusCode == HttpStatusCode.InternalServerError)
         {
             _logger.LogError(

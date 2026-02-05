@@ -19,28 +19,23 @@ public sealed class CommentConfiguration : IEntityTypeConfiguration<Comment>
         builder.Property(x => x.CreatedAt)
             .IsRequired();
 
-        // Relationship: Comment -> Post
         builder.HasOne(x => x.Post)
             .WithMany(p => p.Comments)
             .HasForeignKey(x => x.PostId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Relationship: Comment -> AppUser (Author)
         builder.HasOne(x => x.Author)
             .WithMany()
             .HasForeignKey(x => x.AuthorId)
-            .OnDelete(DeleteBehavior.NoAction); // Avoid cascade loop
+            .OnDelete(DeleteBehavior.NoAction);
 
-        // Self-referencing relationship for replies
         builder.HasOne(x => x.ParentComment)
             .WithMany(c => c.Replies)
             .HasForeignKey(x => x.ParentCommentId)
-            .OnDelete(DeleteBehavior.NoAction); // Avoid cascade loop
+            .OnDelete(DeleteBehavior.NoAction);
 
-        // Index for querying comments by post
         builder.HasIndex(x => x.PostId);
 
-        // Index for querying replies
         builder.HasIndex(x => x.ParentCommentId);
     }
 }

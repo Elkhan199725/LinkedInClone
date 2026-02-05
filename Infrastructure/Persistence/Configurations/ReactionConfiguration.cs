@@ -19,19 +19,16 @@ public sealed class ReactionConfiguration : IEntityTypeConfiguration<Reaction>
         builder.Property(x => x.CreatedAt)
             .IsRequired();
 
-        // Relationship: Reaction -> Post
         builder.HasOne(x => x.Post)
             .WithMany(p => p.Reactions)
             .HasForeignKey(x => x.PostId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Relationship: Reaction -> AppUser
         builder.HasOne(x => x.User)
             .WithMany()
             .HasForeignKey(x => x.UserId)
-            .OnDelete(DeleteBehavior.NoAction); // Avoid cascade loop
+            .OnDelete(DeleteBehavior.NoAction);
 
-        // Unique constraint: one reaction per user per post
         builder.HasIndex(x => new { x.PostId, x.UserId })
             .IsUnique();
     }

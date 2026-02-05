@@ -14,7 +14,6 @@ public static class IdentitySeeder
         IUserProfileRepository profileRepository,
         IConfiguration config)
     {
-        // 1) Seed roles
         foreach (var role in AppRoles.All)
         {
             if (await roleManager.RoleExistsAsync(role))
@@ -25,20 +24,18 @@ public static class IdentitySeeder
                 throw new InvalidOperationException($"Failed to create role '{role}': {FormatErrors(roleResult.Errors)}");
         }
 
-        // 2) Seed SuperAdmin (optional; only if configured)
         var seed = config.GetSection("SeedAdmin");
         var emailRaw = seed["Email"];
         var password = seed["Password"];
 
         if (string.IsNullOrWhiteSpace(emailRaw) || string.IsNullOrWhiteSpace(password))
-            return; // no seed admin configured
+            return;
 
         var email = emailRaw.Trim().ToLowerInvariant();
 
         var user = await userManager.FindByEmailAsync(email);
         if (user is null)
         {
-            // Create identity user (no profile fields)
             user = new AppUser
             {
                 Id = Guid.NewGuid(),
@@ -51,7 +48,6 @@ public static class IdentitySeeder
             if (!created.Succeeded)
                 throw new InvalidOperationException($"Failed to create seeded SuperAdmin user '{email}': {FormatErrors(created.Errors)}");
 
-            // Create UserProfile for the seeded admin
             var profile = new UserProfile
             {
                 AppUserId = user.Id,
@@ -65,7 +61,6 @@ public static class IdentitySeeder
             await profileRepository.SaveChangesAsync();
         }
 
-        // Ensure SuperAdmin role exists on this user
         var currentRoles = await userManager.GetRolesAsync(user);
         if (!currentRoles.Contains(AppRoles.SuperAdmin))
         {

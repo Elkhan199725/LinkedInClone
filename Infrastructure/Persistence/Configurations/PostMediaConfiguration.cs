@@ -30,13 +30,11 @@ public sealed class PostMediaConfiguration : IEntityTypeConfiguration<PostMedia>
         builder.Property(x => x.CreatedAt)
             .IsRequired();
 
-        // Relationship: PostMedia -> Post
         builder.HasOne(x => x.Post)
             .WithMany(p => p.Media)
             .HasForeignKey(x => x.PostId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Index for querying media by post
         builder.HasIndex(x => x.PostId);
     }
 }

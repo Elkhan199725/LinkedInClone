@@ -3,16 +3,91 @@
   "WorkspaceRootPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\entities\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\entities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\commentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\commentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\postmediaconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\postmediaconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\controllers\\mecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\controllers\\mecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\postconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\postconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\enums\\reactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\reactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\reactionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\reactionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\userprofileconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\userprofileconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\appuserconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\appuserconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\identityseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\identityseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\security\\jwttokengenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\security\\jwttokengenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\entities\\postmedia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\postmedia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\entities\\reaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\reaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\enums\\postvisibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,6 +96,26 @@
     {
       "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\enums\\postmediatype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\postmediatype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\enums\\reactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\reactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\common\\interfaces\\ipostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\common\\interfaces\\ipostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\common\\interfaces\\ireactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\common\\interfaces\\ireactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\common\\interfaces\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\common\\interfaces\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\profiles\\validators\\updatemyprofilerequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\profiles\\validators\\updatemyprofilerequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,11 +125,375 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\AppUser.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\AppUser.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\AppUser.cs",
+              "RelativeToolTip": "Domain\\Entities\\AppUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:44:30.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UpdateMyProfileRequestValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Profiles\\Validators\\UpdateMyProfileRequestValidator.cs",
+              "RelativeDocumentMoniker": "Application\\Profiles\\Validators\\UpdateMyProfileRequestValidator.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Profiles\\Validators\\UpdateMyProfileRequestValidator.cs",
+              "RelativeToolTip": "Application\\Profiles\\Validators\\UpdateMyProfileRequestValidator.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAIBJwDwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:42:31.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ICommentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\ICommentRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Common\\Interfaces\\ICommentRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\ICommentRepository.cs",
+              "RelativeToolTip": "Application\\Common\\Interfaces\\ICommentRepository.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAIBQwAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:42:11.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "IReactionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\IReactionRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Common\\Interfaces\\IReactionRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\IReactionRepository.cs",
+              "RelativeToolTip": "Application\\Common\\Interfaces\\IReactionRepository.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAIBQwAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:42:11.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "IPostRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\IPostRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Common\\Interfaces\\IPostRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\IPostRepository.cs",
+              "RelativeToolTip": "Application\\Common\\Interfaces\\IPostRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAEBUwAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:42:11.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ReactionType.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\ReactionType.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\ReactionType.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\ReactionType.cs",
+              "RelativeToolTip": "Domain\\Enums\\ReactionType.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAIBJwAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:41:57.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "PostMediaType.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostMediaType.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\PostMediaType.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostMediaType.cs",
+              "RelativeToolTip": "Domain\\Enums\\PostMediaType.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAIBJwAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:41:57.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "PostVisibility.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostVisibility.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\PostVisibility.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostVisibility.cs",
+              "RelativeToolTip": "Domain\\Enums\\PostVisibility.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAIBJwAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:41:57.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Reaction.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Reaction.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Reaction.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Reaction.cs",
+              "RelativeToolTip": "Domain\\Entities\\Reaction.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAEBUwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:41:44.598Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "PostMedia.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\PostMedia.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\PostMedia.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\PostMedia.cs",
+              "RelativeToolTip": "Domain\\Entities\\PostMedia.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAEBUwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:41:44.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Post.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Post.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Post.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Post.cs",
+              "RelativeToolTip": "Domain\\Entities\\Post.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:41:44.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "JwtTokenGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Security\\JwtTokenGenerator.cs",
+              "RelativeDocumentMoniker": "Api\\Security\\JwtTokenGenerator.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Security\\JwtTokenGenerator.cs",
+              "RelativeToolTip": "Api\\Security\\JwtTokenGenerator.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:39:17.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ExceptionHandlingMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeDocumentMoniker": "Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeToolTip": "Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ViewState": "AgIAAJIAAAAAAAAAAIBQwJQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:38:55.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IdentitySeeder.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\IdentitySeeder.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\IdentitySeeder.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\IdentitySeeder.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\IdentitySeeder.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAIBQwEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:38:29.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AppUserConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\AppUserConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\AppUserConfiguration.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\AppUserConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\AppUserConfiguration.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAIBJwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:38:06.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserProfileConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\UserProfileConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\UserProfileConfiguration.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\UserProfileConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\UserProfileConfiguration.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:38:06.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CommentConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\CommentConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\CommentConfiguration.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\CommentConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\CommentConfiguration.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAqwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:37:50.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ReactionConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\ReactionConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\ReactionConfiguration.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\ReactionConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\ReactionConfiguration.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAIBJwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:37:50.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PostMediaConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\PostMediaConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\PostMediaConfiguration.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\PostMediaConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\PostMediaConfiguration.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:37:50.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PostConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\PostConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\PostConfiguration.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\PostConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\PostConfiguration.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAABRwCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:37:49.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAAPcUAAAAAAAAAAAAAA0VAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-02-05T14:32:28.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Comment.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Comment.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Comment.cs",
+              "RelativeToolTip": "Domain\\Entities\\Comment.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAiwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:19:32.113Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\ProfileController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "Api\\Controllers\\ProfileController.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:07:48.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MeController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\MeController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\MeController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\MeController.cs",
+              "RelativeToolTip": "Api\\Controllers\\MeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:07:46.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PostsController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\PostsController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\PostsController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\PostsController.cs",
+              "RelativeToolTip": "Api\\Controllers\\PostsController.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAawJkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:07:44.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:07:42.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Api\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:07:39.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Program.cs",
+              "RelativeDocumentMoniker": "Api\\Program.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Program.cs",
+              "RelativeToolTip": "Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T14:06:35.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "BaseRepository.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Repositories\\BaseRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Repositories\\BaseRepository.cs",
@@ -43,58 +502,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-05T13:43:06.295Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\DependencyInjection.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\DependencyInjection.cs",
-              "RelativeToolTip": "Infrastructure\\DependencyInjection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T13:42:55.076Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ReactionType.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\ReactionType.cs",
-              "RelativeDocumentMoniker": "Domain\\Enums\\ReactionType.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\ReactionType.cs",
-              "RelativeToolTip": "Domain\\Enums\\ReactionType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T13:42:50.357Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PostVisibility.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostVisibility.cs",
-              "RelativeDocumentMoniker": "Domain\\Enums\\PostVisibility.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostVisibility.cs",
-              "RelativeToolTip": "Domain\\Enums\\PostVisibility.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T13:42:42.311Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PostMediaType.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostMediaType.cs",
-              "RelativeDocumentMoniker": "Domain\\Enums\\PostMediaType.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostMediaType.cs",
-              "RelativeToolTip": "Domain\\Enums\\PostMediaType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T13:42:40.831Z",
               "EditorCaption": ""
             }
           ]

@@ -45,22 +45,17 @@ public sealed class UpdateMyProfileRequestValidator : AbstractValidator<UpdateMy
             .When(x => !string.IsNullOrEmpty(x.CoverPhotoUrl));
     }
 
-    /// <summary>
-    /// Validates that the URL is a valid absolute HTTPS URL from Cloudinary's delivery domain.
-    /// </summary>
     private static bool BeAValidCloudinaryUrl(string? url)
     {
         if (string.IsNullOrWhiteSpace(url))
             return true;
 
-        // Must be a valid absolute URI with HTTPS scheme
         if (!Uri.TryCreate(url, UriKind.Absolute, out var uri))
             return false;
 
         if (uri.Scheme != Uri.UriSchemeHttps)
             return false;
 
-        // Must start with Cloudinary's delivery domain
         return url.StartsWith(CloudinaryDomain, StringComparison.OrdinalIgnoreCase);
     }
 }

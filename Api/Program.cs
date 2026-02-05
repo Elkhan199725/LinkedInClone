@@ -15,7 +15,6 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// -------------------- Logging --------------------
 builder.Host.UseSerilog((context, services, configuration) =>
 {
     configuration
@@ -24,32 +23,24 @@ builder.Host.UseSerilog((context, services, configuration) =>
         .Enrich.FromLogContext();
 });
 
-// -------------------- Config (fail fast) --------------------
 var jwtSection = builder.Configuration.GetSection("Jwt");
 var jwtKey = jwtSection["Key"] ?? throw new InvalidOperationException("Jwt:Key missing");
 var issuer = jwtSection["Issuer"] ?? throw new InvalidOperationException("Jwt:Issuer missing");
 var audience = jwtSection["Audience"] ?? throw new InvalidOperationException("Jwt:Audience missing");
 
-Log.Information("Jwt:Key loaded with length {Length}", jwtKey.Length);
-
 if (jwtKey.Length < 32)
     throw new InvalidOperationException("Jwt:Key must be at least 32 characters.");
 
-// -------------------- Services --------------------
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Application Layer (MediatR, AutoMapper, FluentValidation)
 builder.Services.AddApplication();
 
-// Infrastructure Layer (Repositories)
 builder.Services.AddInfrastructure();
 
-// JWT Service (implements IJwtTokenService)
 builder.Services.AddScoped<IJwtTokenService, JwtTokenGenerator>();
 builder.Services.AddScoped<JwtTokenGenerator>();
 
-// Swagger + JWT auth in Swagger UI (Swashbuckle 10.x pattern)
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
@@ -74,7 +65,6 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Client", policy =>
@@ -84,11 +74,9 @@ builder.Services.AddCors(options =>
               .AllowCredentials());
 });
 
-// DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Identity + Roles + Lockout
 builder.Services
     .AddIdentity<AppUser, IdentityRole<Guid>>(options =>
     {
@@ -107,7 +95,6 @@ builder.Services
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-// AuthN/AuthZ — Force JWT as defaults (prevents cookie redirects)
 builder.Services
     .AddAuthentication(options =>
     {
@@ -122,7 +109,6 @@ builder.Services
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-
             ValidIssuer = issuer,
             ValidAudience = audience,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
@@ -132,10 +118,8 @@ builder.Services
 
 builder.Services.AddAuthorization();
 
-// -------------------- App --------------------
 var app = builder.Build();
 
-// Seed Roles + SuperAdmin + UserProfile
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
@@ -144,20 +128,16 @@ using (var scope = app.Services.CreateScope())
     await IdentitySeeder.SeedAsync(roleManager, userManager, profileRepository, app.Configuration);
 }
 
-// Global Exception Handling (must be early in pipeline)
 app.UseExceptionHandling();
 
-// Request logging
 app.UseSerilogRequestLogging();
 
-// Swagger
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Pipeline
 app.UseHttpsRedirection();
 app.UseCors("Client");
 
@@ -166,7 +146,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Startup / shutdown logs
+Log.Information("LinkedInClone API started successfully");
+app.Lifetime.ApplicationStopped.Register(Log.CloseAndFlush);
+
+app.Run();
+
+app.MapControllers();
+
 Log.Information("LinkedInClone API started successfully");
 app.Lifetime.ApplicationStopped.Register(Log.CloseAndFlush);
 

@@ -33,7 +33,6 @@ public sealed class AdminController : ControllerBase
         if (role is null)
             return BadRequest("Invalid role.");
 
-        // Prevent self-demotion
         var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (currentUserId == request.UserId.ToString() && role != AppRoles.SuperAdmin)
             return BadRequest("You cannot remove your own SuperAdmin role.");

@@ -60,7 +60,6 @@ public sealed class JwtTokenGenerator : IJwtTokenService
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
-    // Legacy method for backward compatibility
     public string Generate(AppUser user, IEnumerable<string> roles)
         => GenerateToken(user.Id, user.Email ?? string.Empty, user.UserName, roles);
 

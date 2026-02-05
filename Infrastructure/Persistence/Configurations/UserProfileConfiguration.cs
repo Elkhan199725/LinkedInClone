@@ -10,10 +10,8 @@ public class UserProfileConfiguration : IEntityTypeConfiguration<UserProfile>
     {
         builder.ToTable("UserProfiles");
 
-        // Shared primary key: AppUserId is both PK and FK
         builder.HasKey(x => x.AppUserId);
 
-        // 1:1 relationship with AppUser (shared PK pattern)
         builder.HasOne(x => x.AppUser)
             .WithOne()
             .HasForeignKey<UserProfile>(x => x.AppUserId)
