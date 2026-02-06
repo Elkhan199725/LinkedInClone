@@ -50,7 +50,7 @@ public sealed class RegisterCommandHandler : IRequestHandler<RegisterCommand, Au
         {
             Id = Guid.NewGuid(),
             Email = email,
-            UserName = email.Substring(),
+            UserName = email,
             CreatedAt = DateTime.UtcNow
         };
 

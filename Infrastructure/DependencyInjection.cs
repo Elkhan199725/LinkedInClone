@@ -1,13 +1,15 @@
 using Application.Common.Interfaces;
+using Infrastructure.Email;
 using Infrastructure.Persistence.Repositories;
 using Infrastructure.Persistence.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
@@ -16,9 +18,13 @@ public static class DependencyInjection
         services.AddScoped<IPostMediaRepository, PostMediaRepository>();
         services.AddScoped<IReactionRepository, ReactionRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
+        services.AddScoped<IPasswordResetCodeRepository, PasswordResetCodeRepository>();
 
         services.AddScoped<IAccountDeletionService, AccountDeletionService>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+        services.Configure<SmtpSettings>(configuration.GetSection("SmtpSettings"));
+        services.AddScoped<IEmailSender, SmtpEmailSender>();
 
         return services;
     }

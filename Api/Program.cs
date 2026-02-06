@@ -36,7 +36,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddApplication();
 
-builder.Services.AddInfrastructure();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddScoped<IJwtTokenService, JwtTokenGenerator>();
 builder.Services.AddScoped<JwtTokenGenerator>();
@@ -136,6 +136,16 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    var smtpSection = app.Configuration.GetSection("Smtp");
+    Log.Information(
+        "SMTP Config at startup: Host={Host}, Port={Port}, EnableSsl={EnableSsl}, Username={Username}, FromEmail={FromEmail}, PasswordLength={PwdLen}",
+        smtpSection["Host"],
+        smtpSection["Port"],
+        smtpSection["EnableSsl"],
+        smtpSection["Username"],
+        smtpSection["FromEmail"],
+        smtpSection["Password"]?.Length ?? 0);
 }
 
 app.UseHttpsRedirection();

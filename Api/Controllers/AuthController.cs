@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/auth")]
 public sealed class AuthController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -32,5 +32,23 @@ public sealed class AuthController : ControllerBase
     {
         var result = await _mediator.Send(new LoginCommand(request), cancellationToken);
         return Ok(result);
+    }
+
+    [HttpPost("forgot-password")]
+    public async Task<ActionResult<ForgotPasswordResponse>> ForgotPassword(
+        [FromBody] ForgotPasswordRequest request,
+        CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new ForgotPasswordCommand(request), cancellationToken);
+        return Ok(result);
+    }
+
+    [HttpPost("reset-password")]
+    public async Task<IActionResult> ResetPassword(
+        [FromBody] ResetPasswordRequest request,
+        CancellationToken cancellationToken)
+    {
+        await _mediator.Send(new ResetPasswordCommand(request), cancellationToken);
+        return NoContent();
     }
 }

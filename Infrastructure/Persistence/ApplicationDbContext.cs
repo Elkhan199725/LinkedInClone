@@ -17,6 +17,7 @@ public sealed class ApplicationDbContext : IdentityDbContext<AppUser, IdentityRo
     public DbSet<PostMedia> PostMedia => Set<PostMedia>();
     public DbSet<Reaction> Reactions => Set<Reaction>();
     public DbSet<Comment> Comments => Set<Comment>();
+    public DbSet<PasswordResetCode> PasswordResetCodes => Set<PasswordResetCode>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

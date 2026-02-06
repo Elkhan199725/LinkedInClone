@@ -29,6 +29,16 @@ public sealed class AccountController : ControllerBase
         return Ok(result);
     }
 
+    [HttpPut("password")]
+    public async Task<IActionResult> ChangePassword(
+        [FromBody] ChangePasswordRequest request,
+        CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        await _mediator.Send(new ChangePasswordCommand(userId, request), cancellationToken);
+        return NoContent();
+    }
+
     private Guid GetCurrentUserId()
     {
         var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
