@@ -27,32 +27,36 @@ public sealed class AddCommentCommandHandler : IRequestHandler<AddCommentCommand
     {
         var request = command.Request;
 
-        // Verify post exists
         var post = await _postRepository.GetByIdAsync(command.PostId, cancellationToken);
-
         if (post is null)
             throw new NotFoundException(nameof(Post), command.PostId);
 
-        // If replying to a comment, verify parent comment exists and belongs to same post
+        Guid? parentId = null;
+
         if (request.ParentCommentId.HasValue)
         {
-            var parentComment = await _commentRepository.GetByIdAsync(request.ParentCommentId.Value, cancellationToken);
+            var parentComment = await _commentRepository
+                .GetByIdAsync(request.ParentCommentId.Value, cancellationToken);
 
             if (parentComment is null)
                 throw new NotFoundException(nameof(Comment), request.ParentCommentId.Value);
 
             if (parentComment.PostId != command.PostId)
                 throw new ForbiddenException("Parent comment does not belong to this post.");
+
+            // Keep comments to 2 levels max:
+            // If replying to a reply, attach to the top-level comment
+            parentId = parentComment.ParentCommentId ?? parentComment.Id;
         }
 
-        // Get author profile for response
-        var authorProfile = await _userProfileRepository.GetByIdAsync(command.AuthorId, cancellationToken);
+        var authorProfile = await _userProfileRepository
+            .GetByIdAsync(command.AuthorId, cancellationToken);
 
         var comment = new Comment
         {
             PostId = command.PostId,
             AuthorId = command.AuthorId,
-            ParentCommentId = request.ParentCommentId,
+            ParentCommentId = parentId,
             Text = request.Text.Trim(),
             CreatedAt = DateTime.UtcNow
         };
@@ -64,7 +68,9 @@ public sealed class AddCommentCommandHandler : IRequestHandler<AddCommentCommand
             Id: comment.Id,
             PostId: comment.PostId,
             AuthorId: comment.AuthorId,
-            AuthorName: authorProfile != null ? $"{authorProfile.FirstName} {authorProfile.LastName}" : "Unknown",
+            AuthorName: authorProfile != null
+                ? $"{authorProfile.FirstName} {authorProfile.LastName}"
+                : "Unknown",
             AuthorProfilePhotoUrl: authorProfile?.ProfilePhotoUrl,
             Text: comment.Text,
             ParentCommentId: comment.ParentCommentId,

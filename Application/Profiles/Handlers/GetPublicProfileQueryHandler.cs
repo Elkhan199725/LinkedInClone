@@ -21,7 +21,6 @@ public sealed class GetPublicProfileQueryHandler : IRequestHandler<GetPublicProf
 
     public async Task<PublicProfileResponse> Handle(GetPublicProfileQuery request, CancellationToken cancellationToken)
     {
-        // AppUserId IS the primary key now (shared PK pattern)
         var profile = await _repository.GetByIdAsync(request.AppUserId, cancellationToken);
 
         if (profile is null)

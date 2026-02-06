@@ -33,6 +33,10 @@ public sealed record AddCommentRequest(
     Guid? ParentCommentId = null
 );
 
+public sealed record UpdateCommentRequest(
+    string Text
+);
+
 // ==================== Response DTOs ====================
 
 public sealed record PostResponse(

@@ -5,6 +5,7 @@ using Application.Profiles.Queries;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Profiles.Handlers;
 
@@ -12,21 +13,31 @@ public sealed class GetMyProfileQueryHandler : IRequestHandler<GetMyProfileQuery
 {
     private readonly IUserProfileRepository _repository;
     private readonly IMapper _mapper;
+    private readonly ILogger<GetMyProfileQueryHandler> _logger;
 
-    public GetMyProfileQueryHandler(IUserProfileRepository repository, IMapper mapper)
+    public GetMyProfileQueryHandler(
+        IUserProfileRepository repository,
+        IMapper mapper,
+        ILogger<GetMyProfileQueryHandler> logger)
     {
         _repository = repository;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<MyProfileResponse> Handle(GetMyProfileQuery request, CancellationToken cancellationToken)
     {
-        // AppUserId IS the primary key now (shared PK pattern)
+        _logger.LogDebug("Fetching profile for user {UserId}", request.AppUserId);
+
         var profile = await _repository.GetByIdAsync(request.AppUserId, cancellationToken);
 
         if (profile is null)
+        {
+            _logger.LogWarning("Profile not found for user {UserId}", request.AppUserId);
             throw new NotFoundException(nameof(UserProfile), request.AppUserId);
+        }
 
+        _logger.LogDebug("Successfully fetched profile for user {UserId}", request.AppUserId);
         return _mapper.Map<MyProfileResponse>(profile);
     }
 }

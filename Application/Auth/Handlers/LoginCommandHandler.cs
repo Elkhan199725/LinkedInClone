@@ -29,12 +29,10 @@ public sealed class LoginCommandHandler : IRequestHandler<LoginCommand, AuthResp
         var request = command.Request;
         var email = request.Email.Trim().ToLowerInvariant();
 
-        // Find user by email
         var user = await _userManager.FindByEmailAsync(email);
         if (user is null)
             throw new AuthenticationException("Invalid credentials.");
 
-        // Verify password with lockout support
         var signInResult = await _signInManager.CheckPasswordSignInAsync(
             user,
             request.Password,
@@ -48,7 +46,6 @@ public sealed class LoginCommandHandler : IRequestHandler<LoginCommand, AuthResp
             throw new AuthenticationException("Invalid credentials.");
         }
 
-        // Get roles and generate token
         var roles = await _userManager.GetRolesAsync(user);
         var token = _jwtTokenService.GenerateToken(user.Id, user.Email!, user.UserName, roles);
 

@@ -47,7 +47,7 @@ public sealed class GetMyPostsQueryHandler : IRequestHandler<GetMyPostsQuery, Po
                 .Select(m => _mapper.Map<PostMediaResponse>(m))
                 .ToList(),
             ReactionsCount: post.Reactions.Count,
-            CommentsCount: 0, // Not loaded in this query for performance
+            CommentsCount: 0,
             CurrentUserReaction: post.Reactions.FirstOrDefault(r => r.UserId == request.AuthorId)?.Type,
             CreatedAt: post.CreatedAt,
             UpdatedAt: post.UpdatedAt

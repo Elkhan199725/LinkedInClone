@@ -26,7 +26,6 @@ public sealed class AddPostMediaCommandHandler : IRequestHandler<AddPostMediaCom
 
     public async Task<IReadOnlyList<PostMediaResponse>> Handle(AddPostMediaCommand command, CancellationToken cancellationToken)
     {
-        // Verify post exists and user is the author
         var post = await _postRepository.GetByIdAsync(command.PostId, cancellationToken);
 
         if (post is null)

@@ -90,6 +90,20 @@ public sealed class ExceptionHandlingMiddleware
                 (object?)null
             ),
 
+            InvalidOperationException invalidOp => (
+                HttpStatusCode.BadRequest,
+                "OPERATION_FAILED",
+                invalidOp.Message,
+                (object?)null
+            ),
+
+            ArgumentException argEx => (
+                HttpStatusCode.BadRequest,
+                "BAD_REQUEST",
+                argEx.Message,
+                (object?)null
+            ),
+
             _ => (
                 HttpStatusCode.InternalServerError,
                 "INTERNAL_ERROR",

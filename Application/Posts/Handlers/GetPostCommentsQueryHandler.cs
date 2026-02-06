@@ -1,6 +1,7 @@
 using Application.Common.Interfaces;
 using Application.Posts.Dtos;
 using Application.Posts.Queries;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Posts.Handlers;
@@ -26,13 +27,11 @@ public sealed class GetPostCommentsQueryHandler : IRequestHandler<GetPostComment
             request.PageSize,
             cancellationToken);
 
-        // Get all unique author IDs
         var authorIds = comments
             .SelectMany(c => new[] { c.AuthorId }.Concat(c.Replies.Select(r => r.AuthorId)))
             .Distinct()
             .ToList();
 
-        // Batch load author profiles
         var authorProfiles = new Dictionary<Guid, (string Name, string? PhotoUrl)>();
         foreach (var authorId in authorIds)
         {
@@ -47,7 +46,7 @@ public sealed class GetPostCommentsQueryHandler : IRequestHandler<GetPostComment
     }
 
     private static CommentResponse MapComment(
-        Domain.Entities.Comment comment,
+        Comment comment,
         Dictionary<Guid, (string Name, string? PhotoUrl)> authorProfiles)
     {
         var (authorName, authorPhotoUrl) = authorProfiles.GetValueOrDefault(

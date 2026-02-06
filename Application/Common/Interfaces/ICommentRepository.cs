@@ -5,4 +5,6 @@ namespace Application.Common.Interfaces;
 public interface ICommentRepository : IBaseRepository<Comment>
 {
     Task<IReadOnlyList<Comment>> GetCommentsByPostAsync(Guid postId, int page, int pageSize, CancellationToken cancellationToken = default);
+    Task<IReadOnlyList<Comment>> GetRepliesByParentIdAsync(Guid parentCommentId, CancellationToken cancellationToken = default);
+    Task RemoveRangeAsync(IEnumerable<Comment> comments, CancellationToken cancellationToken = default);
 }

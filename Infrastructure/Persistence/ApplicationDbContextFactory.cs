@@ -14,8 +14,6 @@ public sealed class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Ap
             .SetBasePath(apiDir)
             .AddJsonFile("appsettings.json", optional: false)
             .AddJsonFile("appsettings.Development.json", optional: true)
-            // Optional: helps if you move secrets out of appsettings later
-            // .AddUserSecrets<ApplicationDbContextFactory>(optional: true)
             .AddEnvironmentVariables()
             .Build();
 
@@ -51,12 +49,10 @@ public sealed class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Ap
             candidates.Add(Path.Combine(parent, "Api"));
         }
 
-        // Pick first existing directory that looks like the Api project root
         foreach (var path in candidates.Distinct(StringComparer.OrdinalIgnoreCase))
         {
             if (!Directory.Exists(path)) continue;
 
-            // Heuristic: Api folder should contain appsettings.json
             var appsettings = Path.Combine(path, "appsettings.json");
             if (File.Exists(appsettings))
                 return path;

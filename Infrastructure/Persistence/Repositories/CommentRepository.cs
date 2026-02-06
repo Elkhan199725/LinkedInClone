@@ -26,4 +26,19 @@ public sealed class CommentRepository : BaseRepository<Comment>, ICommentReposit
                 .ThenInclude(r => r.Author)
             .ToListAsync(cancellationToken);
     }
+
+    public async Task<IReadOnlyList<Comment>> GetRepliesByParentIdAsync(
+        Guid parentCommentId,
+        CancellationToken cancellationToken = default)
+    {
+        return await _dbSet
+            .Where(c => c.ParentCommentId == parentCommentId)
+            .ToListAsync(cancellationToken);
+    }
+
+    public Task RemoveRangeAsync(IEnumerable<Comment> comments, CancellationToken cancellationToken = default)
+    {
+        _dbSet.RemoveRange(comments);
+        return Task.CompletedTask;
+    }
 }

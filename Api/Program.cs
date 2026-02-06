@@ -150,10 +150,3 @@ Log.Information("LinkedInClone API started successfully");
 app.Lifetime.ApplicationStopped.Register(Log.CloseAndFlush);
 
 app.Run();
-
-app.MapControllers();
-
-Log.Information("LinkedInClone API started successfully");
-app.Lifetime.ApplicationStopped.Register(Log.CloseAndFlush);
-
-app.Run();

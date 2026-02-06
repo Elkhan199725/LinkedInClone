@@ -23,7 +23,6 @@ public sealed class CreatePostCommandHandler : IRequestHandler<CreatePostCommand
     {
         var request = command.Request;
 
-        // Get author profile for response
         var authorProfile = await _userProfileRepository.GetByIdAsync(command.AuthorId, cancellationToken);
 
         var post = new Post

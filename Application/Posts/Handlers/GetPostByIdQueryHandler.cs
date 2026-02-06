@@ -34,10 +34,8 @@ public sealed class GetPostByIdQueryHandler : IRequestHandler<GetPostByIdQuery, 
         if (post is null)
             throw new NotFoundException(nameof(Post), request.PostId);
 
-        // Get author profile
         var authorProfile = await _userProfileRepository.GetByIdAsync(post.AuthorId, cancellationToken);
 
-        // Get current user's reaction if they are authenticated
         Reaction? currentUserReaction = null;
         if (request.CurrentUserId.HasValue)
         {

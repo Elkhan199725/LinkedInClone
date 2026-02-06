@@ -1,0 +1,39 @@
+using Application.Account.Commands;
+using Application.Account.Dtos;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+namespace Api.Controllers;
+
+[ApiController]
+[Route("api/account")]
+[Authorize]
+public sealed class AccountController : ControllerBase
+{
+    private readonly IMediator _mediator;
+
+    public AccountController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
+    [HttpPut("email")]
+    public async Task<ActionResult<ChangeEmailResponse>> ChangeEmail(
+        [FromBody] ChangeEmailRequest request,
+        CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        var result = await _mediator.Send(new ChangeEmailCommand(userId, request), cancellationToken);
+        return Ok(result);
+    }
+
+    private Guid GetCurrentUserId()
+    {
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+            throw new UnauthorizedAccessException("Invalid or missing user identifier.");
+        return userId;
+    }
+}

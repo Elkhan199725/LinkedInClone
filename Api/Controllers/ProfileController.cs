@@ -43,6 +43,17 @@ public sealed class ProfileController : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
+    [HttpDelete("me")]
+    public async Task<IActionResult> DeleteMyAccount(CancellationToken cancellationToken)
+    {
+        if (!TryGetCurrentUserId(out var appUserId))
+            return Unauthorized();
+
+        await _mediator.Send(new DeleteMyAccountCommand(appUserId), cancellationToken);
+        return NoContent();
+    }
+
     [AllowAnonymous]
     [HttpGet("{userId:guid}")]
     public async Task<ActionResult<PublicProfileResponse>> GetPublicProfile(

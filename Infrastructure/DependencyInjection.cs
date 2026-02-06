@@ -1,5 +1,6 @@
 using Application.Common.Interfaces;
 using Infrastructure.Persistence.Repositories;
+using Infrastructure.Persistence.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure;
@@ -8,15 +9,16 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
-        // Register generic repository (fallback)
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
-        // Register entity-specific repositories
         services.AddScoped<IUserProfileRepository, UserProfileRepository>();
         services.AddScoped<IPostRepository, PostRepository>();
         services.AddScoped<IPostMediaRepository, PostMediaRepository>();
         services.AddScoped<IReactionRepository, ReactionRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
+
+        services.AddScoped<IAccountDeletionService, AccountDeletionService>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;
     }

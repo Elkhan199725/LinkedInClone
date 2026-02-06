@@ -12,16 +12,12 @@ public static class DependencyInjection
     {
         var assembly = Assembly.GetExecutingAssembly();
 
-        // MediatR
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
-        // AutoMapper
         services.AddAutoMapper(assembly);
 
-        // FluentValidation
         services.AddValidatorsFromAssembly(assembly);
 
-        // Validation Pipeline Behavior
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
         return services;

@@ -22,13 +22,11 @@ public sealed class ReactToPostCommandHandler : IRequestHandler<ReactToPostComma
 
     public async Task<ReactionResponse> Handle(ReactToPostCommand command, CancellationToken cancellationToken)
     {
-        // Verify post exists
         var post = await _postRepository.GetByIdAsync(command.PostId, cancellationToken);
 
         if (post is null)
             throw new NotFoundException(nameof(Post), command.PostId);
 
-        // Check if user already has a reaction on this post
         var existingReaction = await _reactionRepository.GetUserReactionAsync(
             command.PostId,
             command.UserId,
@@ -36,7 +34,6 @@ public sealed class ReactToPostCommandHandler : IRequestHandler<ReactToPostComma
 
         if (existingReaction is not null)
         {
-            // Update existing reaction type
             existingReaction.Type = command.Type;
             existingReaction.UpdatedAt = DateTime.UtcNow;
 
@@ -52,7 +49,6 @@ public sealed class ReactToPostCommandHandler : IRequestHandler<ReactToPostComma
             );
         }
 
-        // Create new reaction
         var reaction = new Reaction
         {
             PostId = command.PostId,

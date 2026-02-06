@@ -78,6 +78,18 @@ public sealed class PostsController : ControllerBase
         return Ok(result);
     }
 
+    [HttpPut("{postId:guid}")]
+    [Authorize]
+    public async Task<ActionResult<PostResponse>> UpdatePost(
+        Guid postId,
+        [FromBody] UpdatePostRequest request,
+        CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        var result = await _mediator.Send(new UpdatePostCommand(postId, userId, request), cancellationToken);
+        return Ok(result);
+    }
+
     [HttpDelete("{postId:guid}")]
     [Authorize]
     public async Task<IActionResult> DeletePost(
@@ -122,6 +134,31 @@ public sealed class PostsController : ControllerBase
         var userId = GetCurrentUserId();
         var result = await _mediator.Send(new AddCommentCommand(postId, userId, request), cancellationToken);
         return CreatedAtAction(nameof(GetPostComments), new { postId }, result);
+    }
+
+    [HttpPut("{postId:guid}/comments/{commentId:guid}")]
+    [Authorize]
+    public async Task<ActionResult<CommentResponse>> UpdateComment(
+        Guid postId,
+        Guid commentId,
+        [FromBody] UpdateCommentRequest request,
+        CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        var result = await _mediator.Send(new UpdateCommentCommand(postId, commentId, userId, request), cancellationToken);
+        return Ok(result);
+    }
+
+    [HttpDelete("{postId:guid}/comments/{commentId:guid}")]
+    [Authorize]
+    public async Task<IActionResult> DeleteComment(
+        Guid postId,
+        Guid commentId,
+        CancellationToken cancellationToken)
+    {
+        var userId = GetCurrentUserId();
+        await _mediator.Send(new DeleteCommentCommand(postId, commentId, userId), cancellationToken);
+        return NoContent();
     }
 
     [HttpGet("{postId:guid}/comments")]

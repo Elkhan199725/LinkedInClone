@@ -6,6 +6,7 @@ using Domain.Constants;
 using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Auth.Handlers;
 
@@ -14,15 +15,21 @@ public sealed class RegisterCommandHandler : IRequestHandler<RegisterCommand, Au
     private readonly UserManager<AppUser> _userManager;
     private readonly IUserProfileRepository _profileRepository;
     private readonly IJwtTokenService _jwtTokenService;
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly ILogger<RegisterCommandHandler> _logger;
 
     public RegisterCommandHandler(
         UserManager<AppUser> userManager,
         IUserProfileRepository profileRepository,
-        IJwtTokenService jwtTokenService)
+        IJwtTokenService jwtTokenService,
+        IUnitOfWork unitOfWork,
+        ILogger<RegisterCommandHandler> logger)
     {
         _userManager = userManager;
         _profileRepository = profileRepository;
         _jwtTokenService = jwtTokenService;
+        _unitOfWork = unitOfWork;
+        _logger = logger;
     }
 
     public async Task<AuthResponse> Handle(RegisterCommand command, CancellationToken cancellationToken)
@@ -30,46 +37,61 @@ public sealed class RegisterCommandHandler : IRequestHandler<RegisterCommand, Au
         var request = command.Request;
         var email = request.Email.Trim().ToLowerInvariant();
 
-        // Check if email already exists
+        _logger.LogDebug("Starting registration for email: {Email}", email);
+
         var existingUser = await _userManager.FindByEmailAsync(email);
         if (existingUser is not null)
+        {
+            _logger.LogWarning("Registration failed: email {Email} already in use", email);
             throw new RegistrationException("Email already in use.");
+        }
 
-        // Create identity user (no profile fields)
         var user = new AppUser
         {
             Id = Guid.NewGuid(),
             Email = email,
-            UserName = email,
+            UserName = email.Substring(),
             CreatedAt = DateTime.UtcNow
         };
 
-        var createResult = await _userManager.CreateAsync(user, request.Password);
-        if (!createResult.Succeeded)
-            throw new RegistrationException(createResult.Errors.Select(e => e.Description));
-
-        // Create UserProfile with shared PK (AppUserId = user.Id)
-        var profile = new UserProfile
+        return await _unitOfWork.ExecuteInTransactionAsync(async () =>
         {
-            AppUserId = user.Id,
-            FirstName = request.FirstName.Trim(),
-            LastName = request.LastName.Trim(),
-            IsPublic = true,
-            CreatedAt = DateTime.UtcNow
-        };
+            _logger.LogDebug("Creating AppUser for {Email}", email);
+            var createResult = await _userManager.CreateAsync(user, request.Password);
+            if (!createResult.Succeeded)
+            {
+                var errors = createResult.Errors.Select(e => e.Description).ToList();
+                _logger.LogWarning("Failed to create user {Email}: {Errors}", email, string.Join(", ", errors));
+                throw new RegistrationException(errors);
+            }
 
-        await _profileRepository.AddAsync(profile, cancellationToken);
-        await _profileRepository.SaveChangesAsync(cancellationToken);
+            _logger.LogDebug("Creating UserProfile for user {UserId}", user.Id);
+            var profile = new UserProfile
+            {
+                AppUserId = user.Id,
+                FirstName = request.FirstName.Trim(),
+                LastName = request.LastName.Trim(),
+                IsPublic = true,
+                CreatedAt = DateTime.UtcNow
+            };
 
-        // Assign default role
-        var roleResult = await _userManager.AddToRoleAsync(user, AppRoles.User);
-        if (!roleResult.Succeeded)
-            throw new RegistrationException(roleResult.Errors.Select(e => e.Description));
+            await _profileRepository.AddAsync(profile, cancellationToken);
+            await _profileRepository.SaveChangesAsync(cancellationToken);
 
-        // Get all roles and generate token
-        var roles = await _userManager.GetRolesAsync(user);
-        var token = _jwtTokenService.GenerateToken(user.Id, user.Email!, user.UserName, roles);
+            _logger.LogDebug("Adding role {Role} to user {UserId}", AppRoles.User, user.Id);
+            var roleResult = await _userManager.AddToRoleAsync(user, AppRoles.User);
+            if (!roleResult.Succeeded)
+            {
+                var errors = roleResult.Errors.Select(e => e.Description).ToList();
+                _logger.LogWarning("Failed to add role to user {UserId}: {Errors}", user.Id, string.Join(", ", errors));
+                throw new RegistrationException(errors);
+            }
 
-        return new AuthResponse(user.Id, user.Email!, roles.ToArray(), token);
+            var roles = await _userManager.GetRolesAsync(user);
+            var token = _jwtTokenService.GenerateToken(user.Id, user.Email!, user.UserName, roles);
+
+            _logger.LogInformation("Successfully registered user {UserId} with email {Email}", user.Id, email);
+            return new AuthResponse(user.Id, user.Email!, roles.ToArray(), token);
+        }, cancellationToken);
     }
 }

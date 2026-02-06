@@ -3,119 +3,100 @@
   "WorkspaceRootPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\entities\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\enums\\reactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\reactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\repositories\\userprofilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\repositories\\userprofilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\entities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\auth\\handlers\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\auth\\handlers\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\commentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\commentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\auth\\handlers\\logincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\auth\\handlers\\logincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\postmediaconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\postmediaconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\auth\\commands\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\auth\\commands\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\admin\\commands\\admindeleteusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\admin\\commands\\admindeleteusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\services\\accountdeletionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\services\\accountdeletionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\admin\\validators\\admindeleteusercommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\admin\\validators\\admindeleteusercommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\controllers\\mecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\controllers\\mecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\admin\\handlers\\admindeleteusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\admin\\handlers\\admindeleteusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\account\\dtos\\accountdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\account\\dtos\\accountdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\postconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\postconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\account\\commands\\changeemailcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\account\\commands\\changeemailcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\reactionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\reactionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\account\\validators\\changeemailrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\account\\validators\\changeemailrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\userprofileconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\userprofileconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\account\\validators\\changeemailcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\account\\validators\\changeemailcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\configurations\\appuserconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configurations\\appuserconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\account\\handlers\\changeemailcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\account\\handlers\\changeemailcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\identityseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\identityseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|c:\\users\\asus\\desktop\\linkedincore\\api\\security\\jwttokengenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|Api\\Api.csproj|solutionrelative:api\\security\\jwttokengenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\common\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\common\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\entities\\postmedia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\postmedia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\persistence\\services\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\services\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\entities\\reaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\reaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\asus\\desktop\\linkedincore\\infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\enums\\postvisibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\postvisibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\profiles\\handlers\\deletemyaccountcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\profiles\\handlers\\deletemyaccountcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\enums\\postmediatype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\postmediatype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\profiles\\handlers\\getmyprofilequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\profiles\\handlers\\getmyprofilequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\asus\\desktop\\linkedincore\\domain\\enums\\reactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\reactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\common\\interfaces\\ipostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\common\\interfaces\\ipostrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\common\\interfaces\\ireactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\common\\interfaces\\ireactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\common\\interfaces\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\common\\interfaces\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\profiles\\validators\\updatemyprofilerequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\profiles\\validators\\updatemyprofilerequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\asus\\desktop\\linkedincore\\application\\profiles\\handlers\\updatemyprofilecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\profiles\\handlers\\updatemyprofilecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -125,383 +106,318 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AppUser.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\AppUser.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\AppUser.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\AppUser.cs",
-              "RelativeToolTip": "Domain\\Entities\\AppUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:44:30.611Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "UpdateMyProfileRequestValidator.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Profiles\\Validators\\UpdateMyProfileRequestValidator.cs",
-              "RelativeDocumentMoniker": "Application\\Profiles\\Validators\\UpdateMyProfileRequestValidator.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Profiles\\Validators\\UpdateMyProfileRequestValidator.cs",
-              "RelativeToolTip": "Application\\Profiles\\Validators\\UpdateMyProfileRequestValidator.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAIBJwDwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:42:31.713Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "ICommentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\ICommentRepository.cs",
-              "RelativeDocumentMoniker": "Application\\Common\\Interfaces\\ICommentRepository.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\ICommentRepository.cs",
-              "RelativeToolTip": "Application\\Common\\Interfaces\\ICommentRepository.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAIBQwAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:42:11.609Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "IReactionRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\IReactionRepository.cs",
-              "RelativeDocumentMoniker": "Application\\Common\\Interfaces\\IReactionRepository.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\IReactionRepository.cs",
-              "RelativeToolTip": "Application\\Common\\Interfaces\\IReactionRepository.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAIBQwAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:42:11.522Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "IPostRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\IPostRepository.cs",
-              "RelativeDocumentMoniker": "Application\\Common\\Interfaces\\IPostRepository.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\IPostRepository.cs",
-              "RelativeToolTip": "Application\\Common\\Interfaces\\IPostRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAEBUwAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:42:11.451Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 0,
               "Title": "ReactionType.cs",
               "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\ReactionType.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\ReactionType.cs",
               "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\ReactionType.cs",
               "RelativeToolTip": "Domain\\Enums\\ReactionType.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAIBJwAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:41:57.756Z",
+              "WhenOpened": "2026-02-06T14:52:12.786Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "PostMediaType.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostMediaType.cs",
-              "RelativeDocumentMoniker": "Domain\\Enums\\PostMediaType.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostMediaType.cs",
-              "RelativeToolTip": "Domain\\Enums\\PostMediaType.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAIBJwAYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UserProfileRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Repositories\\UserProfileRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Repositories\\UserProfileRepository.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Repositories\\UserProfileRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Repositories\\UserProfileRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:41:57.624Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "PostVisibility.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostVisibility.cs",
-              "RelativeDocumentMoniker": "Domain\\Enums\\PostVisibility.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Enums\\PostVisibility.cs",
-              "RelativeToolTip": "Domain\\Enums\\PostVisibility.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAIBJwAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:41:57.459Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Reaction.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Reaction.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\Reaction.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Reaction.cs",
-              "RelativeToolTip": "Domain\\Entities\\Reaction.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAEBUwAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:41:44.598Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "PostMedia.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\PostMedia.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\PostMedia.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\PostMedia.cs",
-              "RelativeToolTip": "Domain\\Entities\\PostMedia.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAEBUwBAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:41:44.464Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Post.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Post.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\Post.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Post.cs",
-              "RelativeToolTip": "Domain\\Entities\\Post.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:41:44.247Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "JwtTokenGenerator.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Security\\JwtTokenGenerator.cs",
-              "RelativeDocumentMoniker": "Api\\Security\\JwtTokenGenerator.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Security\\JwtTokenGenerator.cs",
-              "RelativeToolTip": "Api\\Security\\JwtTokenGenerator.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:39:17.758Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "ExceptionHandlingMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "RelativeDocumentMoniker": "Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "RelativeToolTip": "Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "ViewState": "AgIAAJIAAAAAAAAAAIBQwJQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:38:55.114Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "IdentitySeeder.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\IdentitySeeder.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\IdentitySeeder.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\IdentitySeeder.cs",
-              "RelativeToolTip": "Infrastructure\\Persistence\\IdentitySeeder.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAIBQwEoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:38:29.144Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "AppUserConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\AppUserConfiguration.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\AppUserConfiguration.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\AppUserConfiguration.cs",
-              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\AppUserConfiguration.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAIBJwAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:38:06.954Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "UserProfileConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\UserProfileConfiguration.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\UserProfileConfiguration.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\UserProfileConfiguration.cs",
-              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\UserProfileConfiguration.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:38:06.592Z",
+              "WhenOpened": "2026-02-06T13:26:17.672Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CommentConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\CommentConfiguration.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\CommentConfiguration.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\CommentConfiguration.cs",
-              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\CommentConfiguration.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAqwCgAAAAAAAAAAAAAAA==",
+              "Title": "LoginCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Auth\\Handlers\\LoginCommandHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Auth\\Handlers\\LoginCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Auth\\Handlers\\LoginCommandHandler.cs",
+              "RelativeToolTip": "Application\\Auth\\Handlers\\LoginCommandHandler.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwCYAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:37:50.842Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ReactionConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\ReactionConfiguration.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\ReactionConfiguration.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\ReactionConfiguration.cs",
-              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\ReactionConfiguration.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAIBJwCIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:37:50.491Z",
+              "WhenOpened": "2026-02-06T12:56:17.698Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "PostMediaConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\PostMediaConfiguration.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\PostMediaConfiguration.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\PostMediaConfiguration.cs",
-              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\PostMediaConfiguration.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAYwCcAAAAAAAAAAAAAAA==",
+              "Title": "LoginCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Auth\\Commands\\LoginCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Auth\\Commands\\LoginCommand.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Auth\\Commands\\LoginCommand.cs",
+              "RelativeToolTip": "Application\\Auth\\Commands\\LoginCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:37:50.114Z",
+              "WhenOpened": "2026-02-06T12:56:13.447Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "PostConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\PostConfiguration.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\PostConfiguration.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Configurations\\PostConfiguration.cs",
-              "RelativeToolTip": "Infrastructure\\Persistence\\Configurations\\PostConfiguration.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAABRwCEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 23,
+              "Title": "UpdateMyProfileCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Profiles\\Handlers\\UpdateMyProfileCommandHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Profiles\\Handlers\\UpdateMyProfileCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Profiles\\Handlers\\UpdateMyProfileCommandHandler.cs",
+              "RelativeToolTip": "Application\\Profiles\\Handlers\\UpdateMyProfileCommandHandler.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAIBJwEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:37:49.779Z",
+              "WhenOpened": "2026-02-06T12:33:48.682Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Microsoft.Common.CurrentVersion.targets",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AgIAAPcUAAAAAAAAAAAAAA0VAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-02-05T14:32:28.941Z",
+              "DocumentIndex": 22,
+              "Title": "GetMyProfileQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Profiles\\Handlers\\GetMyProfileQueryHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Profiles\\Handlers\\GetMyProfileQueryHandler.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Profiles\\Handlers\\GetMyProfileQueryHandler.cs",
+              "RelativeToolTip": "Application\\Profiles\\Handlers\\GetMyProfileQueryHandler.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAIBJwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T12:33:34.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DeleteMyAccountCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Profiles\\Handlers\\DeleteMyAccountCommandHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Profiles\\Handlers\\DeleteMyAccountCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Profiles\\Handlers\\DeleteMyAccountCommandHandler.cs",
+              "RelativeToolTip": "Application\\Profiles\\Handlers\\DeleteMyAccountCommandHandler.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAIBJwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T12:32:48.172Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Comment.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Comment.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\Comment.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Entities\\Comment.cs",
-              "RelativeToolTip": "Domain\\Entities\\Comment.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAiwA4AAAAAAAAAAAAAAA==",
+              "Title": "RegisterCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Auth\\Handlers\\RegisterCommandHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Auth\\Handlers\\RegisterCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Auth\\Handlers\\RegisterCommandHandler.cs*",
+              "RelativeToolTip": "Application\\Auth\\Handlers\\RegisterCommandHandler.cs*",
+              "ViewState": "AgIAACQAAAAAAAAAAAAswDQAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:19:32.113Z",
+              "WhenOpened": "2026-02-06T12:32:36.149Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProfileController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\ProfileController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\ProfileController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\ProfileController.cs",
-              "RelativeToolTip": "Api\\Controllers\\ProfileController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 20,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAIBZwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:07:48.044Z",
+              "WhenOpened": "2026-02-06T12:32:15.082Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MeController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\MeController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\MeController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\MeController.cs",
-              "RelativeToolTip": "Api\\Controllers\\MeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 19,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Services\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Services\\UnitOfWork.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Services\\UnitOfWork.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Services\\UnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:07:46.03Z",
+              "WhenOpened": "2026-02-06T12:32:00.418Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PostsController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\PostsController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\PostsController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\PostsController.cs",
-              "RelativeToolTip": "Api\\Controllers\\PostsController.cs",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAawJkAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 18,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "Application\\Common\\Interfaces\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Common\\Interfaces\\IUnitOfWork.cs",
+              "RelativeToolTip": "Application\\Common\\Interfaces\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:07:44.693Z",
+              "WhenOpened": "2026-02-06T12:31:50.146Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Api\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 17,
+              "Title": "ExceptionHandlingMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeDocumentMoniker": "Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeToolTip": "Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ViewState": "AgIAAGcAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:07:42.744Z",
+              "WhenOpened": "2026-02-06T12:31:36.719Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Api\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Api\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 16,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Api\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:07:39.36Z",
+              "WhenOpened": "2026-02-06T12:17:45.236Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Program.cs",
-              "RelativeDocumentMoniker": "Api\\Program.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Program.cs",
-              "RelativeToolTip": "Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 15,
+              "Title": "ChangeEmailCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Account\\Handlers\\ChangeEmailCommandHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Account\\Handlers\\ChangeEmailCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Account\\Handlers\\ChangeEmailCommandHandler.cs",
+              "RelativeToolTip": "Application\\Account\\Handlers\\ChangeEmailCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T14:06:35.474Z",
+              "WhenOpened": "2026-02-06T12:17:37.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ChangeEmailCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Account\\Validators\\ChangeEmailCommandValidator.cs",
+              "RelativeDocumentMoniker": "Application\\Account\\Validators\\ChangeEmailCommandValidator.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Account\\Validators\\ChangeEmailCommandValidator.cs",
+              "RelativeToolTip": "Application\\Account\\Validators\\ChangeEmailCommandValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T12:17:27.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ChangeEmailRequestValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Account\\Validators\\ChangeEmailRequestValidator.cs",
+              "RelativeDocumentMoniker": "Application\\Account\\Validators\\ChangeEmailRequestValidator.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Account\\Validators\\ChangeEmailRequestValidator.cs",
+              "RelativeToolTip": "Application\\Account\\Validators\\ChangeEmailRequestValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T12:17:27.594Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "BaseRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Repositories\\BaseRepository.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Repositories\\BaseRepository.cs",
-              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Repositories\\BaseRepository.cs",
-              "RelativeToolTip": "Infrastructure\\Persistence\\Repositories\\BaseRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Title": "ChangeEmailCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Account\\Commands\\ChangeEmailCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Account\\Commands\\ChangeEmailCommand.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Account\\Commands\\ChangeEmailCommand.cs",
+              "RelativeToolTip": "Application\\Account\\Commands\\ChangeEmailCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T13:43:06.295Z",
+              "WhenOpened": "2026-02-06T12:17:19.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AccountDtos.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Account\\Dtos\\AccountDtos.cs",
+              "RelativeDocumentMoniker": "Application\\Account\\Dtos\\AccountDtos.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Account\\Dtos\\AccountDtos.cs",
+              "RelativeToolTip": "Application\\Account\\Dtos\\AccountDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T12:17:12.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Api\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Api\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAIBJwFEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T12:15:16.298Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AdminDeleteUserCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Admin\\Handlers\\AdminDeleteUserCommandHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Admin\\Handlers\\AdminDeleteUserCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Admin\\Handlers\\AdminDeleteUserCommandHandler.cs",
+              "RelativeToolTip": "Application\\Admin\\Handlers\\AdminDeleteUserCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T12:15:00.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminDeleteUserCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Admin\\Validators\\AdminDeleteUserCommandValidator.cs",
+              "RelativeDocumentMoniker": "Application\\Admin\\Validators\\AdminDeleteUserCommandValidator.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Admin\\Validators\\AdminDeleteUserCommandValidator.cs",
+              "RelativeToolTip": "Application\\Admin\\Validators\\AdminDeleteUserCommandValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T12:14:51.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AdminDeleteUserCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Admin\\Commands\\AdminDeleteUserCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Admin\\Commands\\AdminDeleteUserCommand.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Admin\\Commands\\AdminDeleteUserCommand.cs",
+              "RelativeToolTip": "Application\\Admin\\Commands\\AdminDeleteUserCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T12:14:44.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AccountDeletionService.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Services\\AccountDeletionService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Services\\AccountDeletionService.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Persistence\\Services\\AccountDeletionService.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Services\\AccountDeletionService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAIBJwIsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T12:12:40.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Program.cs",
+              "RelativeDocumentMoniker": "Api\\Program.cs",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Program.cs",
+              "RelativeToolTip": "Api\\Program.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAAAJgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T11:45:30.938Z",
               "EditorCaption": ""
             }
           ]
