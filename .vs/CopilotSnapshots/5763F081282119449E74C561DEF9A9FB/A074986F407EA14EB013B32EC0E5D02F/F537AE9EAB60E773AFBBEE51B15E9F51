@@ -1,0 +1,20 @@
+﻿using Domain.Common;
+
+namespace Domain.Entities;
+
+public class UserProfile : BaseEntity
+{
+    public Guid AppUserId { get; set; }
+
+    public string FirstName { get; set; } = null!;
+    public string LastName { get; set; } = null!;
+
+    public string? Headline { get; set; }
+    public string? About { get; set; }
+    public string? Location { get; set; }
+
+    public string? ProfilePhotoUrl { get; set; }
+    public string? CoverPhotoUrl { get; set; }
+
+    public bool IsPublic { get; set; } = true;
+}

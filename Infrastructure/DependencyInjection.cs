@@ -19,11 +19,13 @@ public static class DependencyInjection
         services.AddScoped<IReactionRepository, ReactionRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
         services.AddScoped<IPasswordResetCodeRepository, PasswordResetCodeRepository>();
+        services.AddScoped<IUserFollowRepository, UserFollowRepository>();
+        services.AddScoped<IConnectionRequestRepository, ConnectionRequestRepository>();
+        services.AddScoped<IConnectionRepository, ConnectionRepository>();
 
         services.AddScoped<IAccountDeletionService, AccountDeletionService>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-        services.Configure<SmtpSettings>(configuration.GetSection("SmtpSettings"));
         services.AddScoped<IEmailSender, SmtpEmailSender>();
 
         return services;

@@ -1,0 +1,105 @@
+﻿using Application.Common.Interfaces;
+using Infrastructure.Email;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+
+namespace Api.Controllers;
+
+[ApiController]
+[Route("api/dev")]
+public sealed class DevController : ControllerBase
+{
+    private readonly IEmailSender _emailSender;
+    private readonly IHostEnvironment _environment;
+    private readonly ILogger<DevController> _logger;
+    private readonly SmtpSettings _smtpSettings;
+
+    public DevController(
+        IEmailSender emailSender,
+        IHostEnvironment environment,
+        ILogger<DevController> logger,
+        IOptions<SmtpSettings> smtpSettings)
+    {
+        _emailSender = emailSender;
+        _environment = environment;
+        _logger = logger;
+        _smtpSettings = smtpSettings.Value;
+    }
+
+    public sealed record TestEmailRequest(string ToEmail);
+    public sealed record TestEmailResponse(bool Success, string Message, string? Error = null);
+
+    [HttpPost("test-email")]
+    public async Task<ActionResult<TestEmailResponse>> TestEmail(
+        [FromBody] TestEmailRequest request,
+        CancellationToken cancellationToken)
+    {
+        if (!_environment.IsDevelopment())
+        {
+            _logger.LogWarning("Test email endpoint called in non-development environment");
+            return NotFound();
+        }
+
+        if (string.IsNullOrWhiteSpace(request.ToEmail))
+        {
+            return BadRequest(new TestEmailResponse(false, "Email address is required"));
+        }
+
+        _logger.LogInformation("DEV: Test email requested to {ToEmail}", request.ToEmail);
+
+        try
+        {
+            var subject = "LinkedInClone - SMTP Test Email";
+            var body = $@"
+<!DOCTYPE html>
+<html>
+<head><meta charset='utf-8'></head>
+<body style='font-family: Arial, sans-serif; padding: 20px;'>
+    <h2 style='color: #0077B5;'>✅ SMTP Test Successful!</h2>
+    <p>Your email configuration is working correctly.</p>
+    <hr/>
+    <p><strong>Details:</strong></p>
+    <ul>
+        <li>Host: {_smtpSettings.Host}</li>
+        <li>Port: {_smtpSettings.Port}</li>
+        <li>From: {_smtpSettings.GetFromEmail()}</li>
+        <li>Timestamp: {DateTime.UtcNow:yyyy-MM-dd HH:mm:ss} UTC</li>
+    </ul>
+    <p>Best regards,<br/>LinkedInClone Dev Team</p>
+</body>
+</html>";
+
+            await _emailSender.SendEmailAsync(request.ToEmail, subject, body, cancellationToken);
+
+            _logger.LogInformation("DEV: Test email sent successfully to {ToEmail}", request.ToEmail);
+            return Ok(new TestEmailResponse(true, $"Email sent successfully to {request.ToEmail}"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "DEV: Test email FAILED to {ToEmail}: {Error}", request.ToEmail, ex.Message);
+            return Ok(new TestEmailResponse(false, "Email sending failed", ex.Message));
+        }
+    }
+
+    [HttpGet("smtp-status")]
+    public IActionResult GetSmtpStatus()
+    {
+        if (!_environment.IsDevelopment())
+        {
+            return NotFound();
+        }
+
+        return Ok(new
+        {
+            environment = _environment.EnvironmentName,
+            configured = _smtpSettings.IsValid,
+            host = _smtpSettings.Host,
+            port = _smtpSettings.Port,
+            enableSsl = _smtpSettings.EnableSsl,
+            username = string.IsNullOrWhiteSpace(_smtpSettings.Username) ? "(not set)" : "(set)",
+            password = string.IsNullOrWhiteSpace(_smtpSettings.Password) ? "(not set)" : "(set)",
+            fromEmail = _smtpSettings.GetFromEmail()
+        });
+    }
+}

@@ -1,0 +1,43 @@
+﻿using Application.Common.Interfaces;
+using Application.Network.Dtos;
+using Application.Network.Queries;
+using MediatR;
+
+namespace Application.Network.Handlers;
+
+public sealed class GetFollowingQueryHandler : IRequestHandler<GetFollowingQuery, FollowListResponse>
+{
+    private readonly IUserFollowRepository _followRepository;
+    private readonly IUserProfileRepository _profileRepository;
+
+    public GetFollowingQueryHandler(
+        IUserFollowRepository followRepository,
+        IUserProfileRepository profileRepository)
+    {
+        _followRepository = followRepository;
+        _profileRepository = profileRepository;
+    }
+
+    public async Task<FollowListResponse> Handle(GetFollowingQuery query, CancellationToken cancellationToken)
+    {
+        var follows = await _followRepository.GetFollowingAsync(query.UserId, query.Page, query.PageSize, cancellationToken);
+        var totalCount = await _followRepository.GetFollowingCountAsync(query.UserId, cancellationToken);
+
+        var userIds = follows.Select(f => f.FollowedUserId).ToList();
+        var profiles = await _profileRepository.GetAllAsync(p => userIds.Contains(p.AppUserId), cancellationToken);
+        var profileDict = profiles.ToDictionary(p => p.AppUserId);
+
+        var users = follows.Select(f =>
+        {
+            profileDict.TryGetValue(f.FollowedUserId, out var profile);
+            return new UserSummaryDto(
+                f.FollowedUserId,
+                profile != null ? $"{profile.FirstName} {profile.LastName}" : "Unknown User",
+                profile?.Headline,
+                profile?.ProfilePhotoUrl
+            );
+        }).ToList();
+
+        return new FollowListResponse(users, query.Page, query.PageSize, totalCount);
+    }
+}

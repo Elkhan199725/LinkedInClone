@@ -1,0 +1,24 @@
+﻿using Application.Common.Interfaces;
+using Infrastructure.Persistence.Repositories;
+using Infrastructure.Persistence.Services;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Infrastructure;
+
+public static class DependencyInjection
+{
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    {
+        services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
+        services.AddScoped<IUserProfileRepository, UserProfileRepository>();
+        services.AddScoped<IPostRepository, PostRepository>();
+        services.AddScoped<IPostMediaRepository, PostMediaRepository>();
+        services.AddScoped<IReactionRepository, ReactionRepository>();
+        services.AddScoped<ICommentRepository, CommentRepository>();
+
+        services.AddScoped<IAccountDeletionService, AccountDeletionService>();
+
+        return services;
+    }
+}

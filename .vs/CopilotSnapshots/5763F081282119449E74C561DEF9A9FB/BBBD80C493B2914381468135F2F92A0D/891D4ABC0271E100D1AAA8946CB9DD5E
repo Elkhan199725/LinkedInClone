@@ -1,0 +1,114 @@
+﻿using Application.Common.Interfaces;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
+
+namespace Infrastructure.Email;
+
+public sealed class SmtpEmailSender : IEmailSender
+{
+    private readonly SmtpSettings _settings;
+    private readonly ILogger<SmtpEmailSender> _logger;
+
+    public SmtpEmailSender(IOptions<SmtpSettings> settings, ILogger<SmtpEmailSender> logger)
+    {
+        _settings = settings.Value;
+        _logger = logger;
+
+        LogSmtpConfiguration();
+    }
+
+    private void LogSmtpConfiguration()
+    {
+        _logger.LogInformation(
+            "SMTP Configuration loaded - Host: {Host}, Port: {Port}, EnableSsl: {EnableSsl}, FromEmail: {FromEmail}, FromName: {FromName}, Username: {Username}",
+            _settings.Host,
+            _settings.Port,
+            _settings.EnableSsl,
+            _settings.FromEmail,
+            _settings.FromName,
+            string.IsNullOrEmpty(_settings.Username) ? "(not set)" : "(set)");
+
+        if (string.IsNullOrWhiteSpace(_settings.Host))
+            _logger.LogWarning("SMTP Host is not configured!");
+
+        if (string.IsNullOrWhiteSpace(_settings.Username))
+            _logger.LogWarning("SMTP Username is not configured!");
+
+        if (string.IsNullOrWhiteSpace(_settings.Password))
+            _logger.LogWarning("SMTP Password is not configured!");
+    }
+
+    public async Task SendEmailAsync(string toEmail, string subject, string body, CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation(
+            "SMTP send started - To: {ToEmail}, Subject: {Subject}, Host: {Host}:{Port}",
+            toEmail, subject, _settings.Host, _settings.Port);
+
+        if (string.IsNullOrWhiteSpace(_settings.Host))
+        {
+            _logger.LogError("SMTP send failed - Host is not configured");
+            throw new InvalidOperationException("SMTP Host is not configured");
+        }
+
+        try
+        {
+            using var client = new SmtpClient(_settings.Host, _settings.Port)
+            {
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(_settings.Username, _settings.Password),
+                EnableSsl = _settings.EnableSsl,
+                Timeout = 30000
+            };
+
+            var fromEmail = !string.IsNullOrWhiteSpace(_settings.FromEmail)
+                ? _settings.FromEmail
+                : _settings.Username;
+
+            var fromName = !string.IsNullOrWhiteSpace(_settings.FromName)
+                ? _settings.FromName
+                : "LinkedInClone";
+
+            using var message = new MailMessage
+            {
+                From = new MailAddress(fromEmail, fromName),
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true,
+                SubjectEncoding = Encoding.UTF8,
+                BodyEncoding = Encoding.UTF8
+            };
+            message.To.Add(new MailAddress(toEmail));
+
+            _logger.LogDebug("Attempting SMTP connection to {Host}:{Port} with SSL={EnableSsl}",
+                _settings.Host, _settings.Port, _settings.EnableSsl);
+
+            await client.SendMailAsync(message, cancellationToken);
+
+            _logger.LogInformation("SMTP send succeeded - Email delivered to {ToEmail}", toEmail);
+        }
+        catch (SmtpException smtpEx)
+        {
+            _logger.LogError(
+                smtpEx,
+                "SMTP send failed - SmtpException: {StatusCode}, Message: {Message}, InnerException: {InnerMessage}",
+                smtpEx.StatusCode,
+                smtpEx.Message,
+                smtpEx.InnerException?.Message ?? "none");
+            throw;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(
+                ex,
+                "SMTP send failed - Exception: {ExceptionType}, Message: {Message}, InnerException: {InnerMessage}",
+                ex.GetType().Name,
+                ex.Message,
+                ex.InnerException?.Message ?? "none");
+            throw;
+        }
+    }
+}

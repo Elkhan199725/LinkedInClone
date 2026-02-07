@@ -18,6 +18,12 @@ public sealed class ApplicationDbContext : IdentityDbContext<AppUser, IdentityRo
     public DbSet<Reaction> Reactions => Set<Reaction>();
     public DbSet<Comment> Comments => Set<Comment>();
     public DbSet<PasswordResetCode> PasswordResetCodes => Set<PasswordResetCode>();
+    public DbSet<UserFollow> UserFollows => Set<UserFollow>();
+    public DbSet<ConnectionRequest> ConnectionRequests => Set<ConnectionRequest>();
+    public DbSet<Connection> Connections => Set<Connection>();
+
+    // Test table for migration verification - can be removed later
+    public DbSet<MigrationTest> MigrationTests => Set<MigrationTest>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

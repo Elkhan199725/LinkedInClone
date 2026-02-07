@@ -1,0 +1,162 @@
+﻿using Application.Auth.Commands;
+using Application.Auth.Dtos;
+using Application.Common.Interfaces;
+using Domain.Entities;
+using MediatR;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace Application.Auth.Handlers;
+
+public sealed class ForgotPasswordCommandHandler : IRequestHandler<ForgotPasswordCommand, ForgotPasswordResponse>
+{
+    private readonly UserManager<AppUser> _userManager;
+    private readonly IPasswordResetCodeRepository _resetCodeRepository;
+    private readonly IEmailSender _emailSender;
+    private readonly ILogger<ForgotPasswordCommandHandler> _logger;
+
+    private const int CodeExpirationMinutes = 10;
+    private const int MinSecondsBetweenRequests = 60;
+
+    public ForgotPasswordCommandHandler(
+        UserManager<AppUser> userManager,
+        IPasswordResetCodeRepository resetCodeRepository,
+        IEmailSender emailSender,
+        ILogger<ForgotPasswordCommandHandler> logger)
+    {
+        _userManager = userManager;
+        _resetCodeRepository = resetCodeRepository;
+        _emailSender = emailSender;
+        _logger = logger;
+    }
+
+    public async Task<ForgotPasswordResponse> Handle(ForgotPasswordCommand command, CancellationToken cancellationToken)
+    {
+        var email = command.Request.Email.Trim().ToLowerInvariant();
+        var genericMessage = "If the email exists, a password reset code has been sent.";
+        var emailSent = false;
+
+        _logger.LogInformation("ForgotPassword request received for email: {Email}", email);
+
+        var user = await _userManager.FindByEmailAsync(email);
+        if (user is null)
+        {
+            _logger.LogInformation("ForgotPassword: User not found for email {Email}, returning generic response (EmailSent=false)", email);
+            return new ForgotPasswordResponse(genericMessage);
+        }
+
+        _logger.LogDebug("ForgotPassword: User found with ID {UserId}", user.Id);
+
+        var existingCode = await _resetCodeRepository.GetActiveByUserIdAsync(user.Id, cancellationToken);
+        if (existingCode is not null && existingCode.LastSentAtUtc.HasValue)
+        {
+            var secondsSinceLastSent = (DateTime.UtcNow - existingCode.LastSentAtUtc.Value).TotalSeconds;
+            if (secondsSinceLastSent < MinSecondsBetweenRequests)
+            {
+                _logger.LogWarning(
+                    "ForgotPassword: Rate limit hit for user {UserId}, last sent {Seconds:F0}s ago (min: {MinSeconds}s). EmailSent=false",
+                    user.Id, secondsSinceLastSent, MinSecondsBetweenRequests);
+                return new ForgotPasswordResponse(genericMessage);
+            }
+        }
+
+        var code = GenerateCode();
+        var codeHash = HashCode(code);
+
+        _logger.LogDebug("ForgotPassword: Generated reset code for user {UserId}, invalidating previous codes", user.Id);
+
+        await _resetCodeRepository.InvalidateAllForUserAsync(user.Id, cancellationToken);
+
+        var resetCode = new PasswordResetCode
+        {
+            UserId = user.Id,
+            CodeHash = codeHash,
+            ExpiresAtUtc = DateTime.UtcNow.AddMinutes(CodeExpirationMinutes),
+            Attempts = 0,
+            LastSentAtUtc = DateTime.UtcNow,
+            IsUsed = false,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        await _resetCodeRepository.AddAsync(resetCode, cancellationToken);
+        await _resetCodeRepository.SaveChangesAsync(cancellationToken);
+
+        _logger.LogDebug("ForgotPassword: Reset code saved to database for user {UserId}", user.Id);
+
+        try
+        {
+            var subject = "Password Reset Code - LinkedInClone";
+            var body = BuildEmailBody(code);
+
+            _logger.LogInformation("ForgotPassword: Attempting to send email to {Email} for user {UserId}", email, user.Id);
+
+            await _emailSender.SendEmailAsync(email, subject, body, cancellationToken);
+
+            emailSent = true;
+            _logger.LogInformation(
+                "ForgotPassword: Email successfully sent to {Email} for user {UserId}. EmailSent=true",
+                email, user.Id);
+        }
+        catch (Exception ex)
+        {
+            emailSent = false;
+            _logger.LogError(
+                ex,
+                "ForgotPassword: Failed to send email to {Email} for user {UserId}. EmailSent=false, Error: {ErrorMessage}",
+                email, user.Id, ex.Message);
+        }
+
+        _logger.LogInformation(
+            "ForgotPassword: Request completed for {Email}. UserFound=true, EmailSent={EmailSent}",
+            email, emailSent);
+
+        return new ForgotPasswordResponse(genericMessage);
+    }
+
+    private static string BuildEmailBody(string code)
+    {
+        return $@"
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+</head>
+<body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>
+    <div style='background-color: #0077B5; padding: 20px; text-align: center;'>
+        <h1 style='color: white; margin: 0;'>LinkedInClone</h1>
+    </div>
+    <div style='padding: 30px; background-color: #f9f9f9;'>
+        <h2 style='color: #333;'>Password Reset Request</h2>
+        <p style='color: #666; font-size: 16px;'>
+            You have requested to reset your password. Use the following verification code:
+        </p>
+        <div style='background-color: #fff; border: 2px solid #0077B5; border-radius: 8px; padding: 20px; text-align: center; margin: 20px 0;'>
+            <span style='font-size: 32px; font-weight: bold; letter-spacing: 8px; color: #0077B5;'>{code}</span>
+        </div>
+        <p style='color: #666; font-size: 14px;'>
+            This code will expire in <strong>10 minutes</strong>.
+        </p>
+        <p style='color: #999; font-size: 12px;'>
+            If you did not request this password reset, please ignore this email. Your password will remain unchanged.
+        </p>
+    </div>
+    <div style='padding: 15px; text-align: center; color: #999; font-size: 12px;'>
+        <p>Best regards,<br/>The LinkedInClone Team</p>
+    </div>
+</body>
+</html>";
+    }
+
+    private static string GenerateCode()
+    {
+        return RandomNumberGenerator.GetInt32(100000, 1000000).ToString();
+    }
+
+    private static string HashCode(string code)
+    {
+        var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(code));
+        return Convert.ToBase64String(bytes);
+    }
+}

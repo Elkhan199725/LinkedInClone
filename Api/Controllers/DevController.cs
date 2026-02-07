@@ -1,4 +1,4 @@
-﻿using Application.Common.Interfaces;
+using Application.Common.Interfaces;
 using Infrastructure.Email;
 using MailKit.Net.Smtp;
 using MailKit.Security;
@@ -10,24 +10,26 @@ namespace Api.Controllers;
 
 [ApiController]
 [Route("api/dev")]
-[ApiExplorerSettings(IgnoreApi = true)] // Hide from Swagger by default (still callable)
 public sealed class DevController : ControllerBase
 {
     private readonly IEmailSender _emailSender;
     private readonly SmtpSettings _smtp;
     private readonly IWebHostEnvironment _env;
     private readonly ILogger<DevController> _logger;
+    private readonly IConfiguration _configuration;
 
     public DevController(
         IEmailSender emailSender,
         IOptions<SmtpSettings> smtp,
         IWebHostEnvironment env,
-        ILogger<DevController> logger)
+        ILogger<DevController> logger,
+        IConfiguration configuration)
     {
         _emailSender = emailSender;
         _smtp = smtp.Value;
         _env = env;
         _logger = logger;
+        _configuration = configuration;
     }
 
     private IActionResult DevOnly()
@@ -43,7 +45,6 @@ public sealed class DevController : ControllerBase
         return Ok(new
         {
             environment = _env.EnvironmentName,
-            isValid = _smtp.IsValid,
             host = _smtp.Host,
             port = _smtp.Port,
             enableSsl = _smtp.EnableSsl,
@@ -51,7 +52,45 @@ public sealed class DevController : ControllerBase
             fromEmail = _smtp.FromEmail,
             fromName = _smtp.FromName,
             passwordSet = !string.IsNullOrWhiteSpace(_smtp.Password),
-            passwordLength = _smtp.Password?.Length ?? 0 // you can remove this later if you want
+            passwordLength = _smtp.Password?.Length ?? 0,
+            isValid = _smtp.IsValid
+        });
+    }
+
+    [HttpGet("config-status")]
+    public IActionResult ConfigStatus()
+    {
+        if (!IsDev()) return DevOnly();
+
+        var connStr = _configuration.GetConnectionString("DefaultConnection") ?? "";
+        var hasDbPassword = connStr.Contains("Password=") && 
+                           !connStr.Contains("Password=__") && 
+                           !connStr.Contains("Password=;") &&
+                           !connStr.Contains("Password=\"\"");
+
+        return Ok(new
+        {
+            environment = _env.EnvironmentName,
+            userSecretsEnabled = _env.IsDevelopment(),
+            database = new
+            {
+                connectionStringSet = !string.IsNullOrWhiteSpace(connStr),
+                passwordSet = hasDbPassword
+            },
+            smtp = new
+            {
+                host = _smtp.Host,
+                port = _smtp.Port,
+                username = _smtp.Username,
+                passwordSet = !string.IsNullOrWhiteSpace(_smtp.Password),
+                passwordLength = _smtp.Password?.Length ?? 0,
+                isValid = _smtp.IsValid
+            },
+            jwt = new
+            {
+                keySet = !string.IsNullOrWhiteSpace(_configuration["Jwt:Key"]),
+                keyLength = _configuration["Jwt:Key"]?.Length ?? 0
+            }
         });
     }
 
@@ -60,7 +99,19 @@ public sealed class DevController : ControllerBase
     {
         if (!IsDev()) return DevOnly();
 
-        var toEmail = _smtp.Username; // send to yourself for a deterministic test
+        if (!_smtp.IsValid)
+        {
+            return BadRequest(new
+            {
+                success = false,
+                error = "SMTP not configured properly",
+                host = _smtp.Host,
+                username = _smtp.Username,
+                passwordSet = !string.IsNullOrWhiteSpace(_smtp.Password)
+            });
+        }
+
+        var toEmail = _smtp.Username;
         var subject = "SMTP Test - LinkedInClone";
         var body = "<h2>Hello</h2><p>This is a dev test email from LinkedInClone.</p>";
 
@@ -81,7 +132,7 @@ public sealed class DevController : ControllerBase
         {
             _logger.LogError(ex, "Dev test email (simple) failed");
 
-            return StatusCode(500, new
+            return Ok(new
             {
                 success = false,
                 errorType = ex.GetType().Name,
@@ -99,25 +150,30 @@ public sealed class DevController : ControllerBase
         if (!IsDev()) return DevOnly();
 
         if (string.IsNullOrWhiteSpace(request?.ToEmail))
-            return BadRequest(new { success = false, error = "toEmail is required." });
+            return BadRequest(new { success = false, error = "toEmail required" });
 
-        _logger.LogInformation("Dev test email sending to {ToEmail}", request.ToEmail);
+        if (!_smtp.IsValid)
+        {
+            return BadRequest(new
+            {
+                success = false,
+                error = "SMTP not configured properly"
+            });
+        }
 
         try
         {
             await _emailSender.SendEmailAsync(
-                request.ToEmail.Trim(),
-                "LinkedInClone Test Email",
+                request.ToEmail,
+                "LinkedInClone Test",
                 $"<p>Test email sent at {DateTime.UtcNow:O}</p>",
                 ct);
 
-            return Ok(new { success = true, message = "Email sent successfully.", toEmail = request.ToEmail });
+            return Ok(new { success = true, message = $"Sent to {request.ToEmail}" });
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Dev test email failed");
-
-            return StatusCode(500, new
+            return Ok(new
             {
                 success = false,
                 errorType = ex.GetType().Name,
@@ -127,14 +183,6 @@ public sealed class DevController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Low-level SMTP authentication test for debugging only.
-    /// This bypasses appsettings binding issues by using explicit credentials.
-    /// Provide values via query string to avoid hardcoding secrets in source code.
-    ///
-    /// Example:
-    /// GET /api/dev/smtp-auth-test?email=you@gmail.com&appPassword=xxxx%20xxxx%20xxxx%20xxxx
-    /// </summary>
     [HttpGet("smtp-auth-test")]
     public async Task<IActionResult> SmtpAuthTest(
         [FromQuery] string email,
@@ -147,8 +195,6 @@ public sealed class DevController : ControllerBase
             return BadRequest(new { success = false, error = "email and appPassword query parameters are required." });
 
         email = email.Trim();
-
-        // IMPORTANT: appPassword may contain spaces (as shown by Google). Do not trim internal spaces.
         appPassword = appPassword.Trim();
 
         var message = new MimeMessage();
@@ -161,7 +207,7 @@ public sealed class DevController : ControllerBase
 
         try
         {
-            client.Timeout = 20_000;
+            client.Timeout = 20000;
             client.AuthenticationMechanisms.Remove("XOAUTH2");
 
             await client.ConnectAsync("smtp.gmail.com", 587, SecureSocketOptions.StartTls, ct);
@@ -180,7 +226,7 @@ public sealed class DevController : ControllerBase
         {
             _logger.LogError(ex, "SMTP auth test failed for {Email}", email);
 
-            return StatusCode(500, new
+            return Ok(new
             {
                 success = false,
                 errorType = ex.GetType().Name,

@@ -1,0 +1,137 @@
+﻿using System.Net;
+using System.Text.Json;
+using Application.Common.Exceptions;
+using FluentValidation;
+
+namespace Api.Middleware;
+
+public sealed class ExceptionHandlingMiddleware
+{
+    private readonly RequestDelegate _next;
+    private readonly ILogger<ExceptionHandlingMiddleware> _logger;
+
+    public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
+    {
+        _next = next;
+        _logger = logger;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        try
+        {
+            await _next(context);
+        }
+        catch (Exception ex)
+        {
+            await HandleExceptionAsync(context, ex);
+        }
+    }
+
+    private async Task HandleExceptionAsync(HttpContext context, Exception exception)
+    {
+        // If the response already started, we can't reliably write our JSON error.
+        if (context.Response.HasStarted)
+        {
+            _logger.LogWarning(
+                exception,
+                "Response has already started; cannot write error response. TraceId: {TraceId}",
+                context.TraceIdentifier
+            );
+            throw exception;
+        }
+
+        var (statusCode, errorCode, message, details) = exception switch
+        {
+            NotFoundException notFound => (
+                HttpStatusCode.NotFound,
+                "NOT_FOUND",
+                notFound.Message,
+                (object?)null
+            ),
+
+            ValidationException validation => (
+                HttpStatusCode.BadRequest,
+                "VALIDATION_ERROR",
+                "One or more validation errors occurred.",
+                (object?)validation.Errors.Select(e => new
+                {
+                    field = e.PropertyName,
+                    message = e.ErrorMessage
+                })
+            ),
+
+            UnauthorizedAccessException unauthorized => (
+                HttpStatusCode.Unauthorized,
+                "UNAUTHORIZED",
+                string.IsNullOrWhiteSpace(unauthorized.Message)
+                    ? "Authentication is required."
+                    : unauthorized.Message,
+                (object?)null
+            ),
+
+            ForbiddenException forbidden => (
+                HttpStatusCode.Forbidden,
+                "FORBIDDEN",
+                forbidden.Message,
+                (object?)null
+            ),
+
+            _ => (
+                HttpStatusCode.InternalServerError,
+                "INTERNAL_ERROR",
+                "An unexpected error occurred.",
+                (object?)null
+            )
+        };
+
+        // Logging
+        if (statusCode == HttpStatusCode.InternalServerError)
+        {
+            _logger.LogError(
+                exception,
+                "Unhandled exception. TraceId: {TraceId}. Message: {Message}",
+                context.TraceIdentifier,
+                exception.Message
+            );
+        }
+        else
+        {
+            _logger.LogWarning(
+                "Handled exception: {ExceptionType}. TraceId: {TraceId}. Message: {Message}",
+                exception.GetType().Name,
+                context.TraceIdentifier,
+                exception.Message
+            );
+        }
+
+        context.Response.Clear();
+        context.Response.ContentType = "application/json";
+        context.Response.StatusCode = (int)statusCode;
+
+        var response = new
+        {
+            traceId = context.TraceIdentifier,
+            error = new
+            {
+                code = errorCode,
+                message,
+                details
+            }
+        };
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+        };
+
+        await context.Response.WriteAsync(JsonSerializer.Serialize(response, options));
+    }
+}
+
+public static class ExceptionHandlingMiddlewareExtensions
+{
+    public static IApplicationBuilder UseExceptionHandling(this IApplicationBuilder app)
+        => app.UseMiddleware<ExceptionHandlingMiddleware>();
+}

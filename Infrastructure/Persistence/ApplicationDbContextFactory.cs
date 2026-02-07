@@ -4,22 +4,45 @@ using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Persistence;
 
+/// <summary>
+/// Design-time factory for EF Core migrations.
+/// Reads connection string from appsettings.json + appsettings.Development.json in the Api project.
+/// </summary>
 public sealed class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
 {
     public ApplicationDbContext CreateDbContext(string[] args)
     {
         var apiDir = FindApiDirectory();
 
-        var configuration = new ConfigurationBuilder()
-            .SetBasePath(apiDir)
-            .AddJsonFile("appsettings.json", optional: false)
-            .AddJsonFile("appsettings.Development.json", optional: true)
-            .AddEnvironmentVariables()
-            .Build();
+        Console.WriteLine($"[EF Design-Time] Using Api directory: {apiDir}");
 
+        var configBuilder = new ConfigurationBuilder()
+            .SetBasePath(apiDir)
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false);
+
+        // Add Development config if it exists (contains real connection string)
+        var devSettingsPath = Path.Combine(apiDir, "appsettings.Development.json");
+        if (File.Exists(devSettingsPath))
+        {
+            configBuilder.AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: false);
+            Console.WriteLine("[EF Design-Time] Loaded appsettings.Development.json");
+        }
+        else
+        {
+            Console.WriteLine("[EF Design-Time] WARNING: appsettings.Development.json not found");
+        }
+
+        var configuration = configBuilder.Build();
         var connectionString = configuration.GetConnectionString("DefaultConnection");
-        if (string.IsNullOrWhiteSpace(connectionString))
-            throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+        if (string.IsNullOrWhiteSpace(connectionString) || connectionString.Contains("__"))
+        {
+            throw new InvalidOperationException(
+                "Connection string 'DefaultConnection' not found or contains placeholders. " +
+                "Ensure appsettings.Development.json exists with a valid connection string.");
+        }
+
+        Console.WriteLine($"[EF Design-Time] Connection string found (length: {connectionString.Length})");
 
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
             .UseSqlServer(connectionString);
@@ -31,22 +54,19 @@ public sealed class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Ap
     {
         var candidates = new List<string>();
 
-        // 1) Current directory
         var currentDir = Directory.GetCurrentDirectory();
         candidates.Add(currentDir);
         candidates.Add(Path.Combine(currentDir, "Api"));
+        candidates.Add(Path.Combine(currentDir, "..", "Api"));
 
-        // 2) App base directory (often bin/Debug/... during tooling)
-        var baseDir = AppContext.BaseDirectory;
-        candidates.Add(baseDir);
-        candidates.Add(Path.Combine(baseDir, "Api"));
-
-        // 3) One level up variants
-        var parent = Directory.GetParent(currentDir)?.FullName;
-        if (parent is not null)
+        // Walk up from current directory looking for Api folder
+        var dir = new DirectoryInfo(currentDir);
+        while (dir != null)
         {
-            candidates.Add(parent);
-            candidates.Add(Path.Combine(parent, "Api"));
+            var apiPath = Path.Combine(dir.FullName, "Api");
+            if (Directory.Exists(apiPath))
+                candidates.Add(apiPath);
+            dir = dir.Parent;
         }
 
         foreach (var path in candidates.Distinct(StringComparer.OrdinalIgnoreCase))
@@ -55,10 +75,12 @@ public sealed class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Ap
 
             var appsettings = Path.Combine(path, "appsettings.json");
             if (File.Exists(appsettings))
+            {
                 return path;
+            }
         }
 
         throw new DirectoryNotFoundException(
-            $"Api directory not found. Tried: {string.Join(" | ", candidates)}");
+            $"Api directory with appsettings.json not found. Searched: {string.Join(", ", candidates)}");
     }
 }

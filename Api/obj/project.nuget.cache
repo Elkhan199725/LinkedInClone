@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Sa19yggQYh8=",
+  "dgSpecHash": "wSFNJg7LUyY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Api\\Api.csproj",
+  "projectFilePath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Api\\Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

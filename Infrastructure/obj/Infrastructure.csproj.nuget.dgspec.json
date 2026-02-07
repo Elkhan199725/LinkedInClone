@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Application.csproj": {
+    "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\obj\\",
+        "outputPath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Domain.csproj"
+              "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Domain\\Domain.csproj"
               }
             }
           }
@@ -373,14 +373,14 @@
         }
       }
     },
-    "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Domain.csproj": {
+    "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -718,14 +718,14 @@
         }
       }
     },
-    "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -746,11 +746,11 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Application\\Application.csproj"
+              "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Application\\Application.csproj"
               },
-              "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Domain.csproj"
+              "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Domain\\Domain.csproj"
               }
             }
           }

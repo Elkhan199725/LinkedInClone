@@ -8,4 +8,4 @@ public sealed record ReactToPostCommand(
     Guid PostId,
     Guid UserId,
     ReactionType Type
-) : IRequest<ReactionResponse>;
+) : IRequest<ReactionResponse?>;

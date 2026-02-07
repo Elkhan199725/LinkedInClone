@@ -1,5 +1,6 @@
 using Application.Common.Interfaces;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories;
 
@@ -7,5 +8,19 @@ public sealed class PostMediaRepository : BaseRepository<PostMedia>, IPostMediaR
 {
     public PostMediaRepository(ApplicationDbContext context) : base(context)
     {
+    }
+
+    public async Task<IReadOnlyList<PostMedia>> GetByPostIdAsync(Guid postId, CancellationToken cancellationToken = default)
+    {
+        return await _dbSet
+            .Where(m => m.PostId == postId)
+            .OrderBy(m => m.Order)
+            .ToListAsync(cancellationToken);
+    }
+
+    public Task RemoveRangeAsync(IEnumerable<PostMedia> mediaItems, CancellationToken cancellationToken = default)
+    {
+        _dbSet.RemoveRange(mediaItems);
+        return Task.CompletedTask;
     }
 }

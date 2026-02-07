@@ -103,13 +103,17 @@ public sealed class PostsController : ControllerBase
 
     [HttpPost("{postId:guid}/reactions")]
     [Authorize]
-    public async Task<ActionResult<ReactionResponse>> ReactToPost(
+    public async Task<IActionResult> ReactToPost(
         Guid postId,
         [FromBody] ReactToPostRequest request,
         CancellationToken cancellationToken)
     {
         var userId = GetCurrentUserId();
         var result = await _mediator.Send(new ReactToPostCommand(postId, userId, request.Type), cancellationToken);
+
+        if (result is null)
+            return NoContent();
+
         return Ok(result);
     }
 

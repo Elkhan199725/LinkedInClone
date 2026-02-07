@@ -1,0 +1,94 @@
+﻿using Api.Security;
+using Domain.Constants;
+using Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public sealed class AuthController : ControllerBase
+{
+    private readonly UserManager<AppUser> _userManager;
+    private readonly SignInManager<AppUser> _signInManager;
+    private readonly JwtTokenGenerator _jwt;
+
+    public AuthController(
+        UserManager<AppUser> userManager,
+        SignInManager<AppUser> signInManager,
+        JwtTokenGenerator jwt)
+    {
+        _userManager = userManager;
+        _signInManager = signInManager;
+        _jwt = jwt;
+    }
+
+    public sealed record RegisterRequest(string Email, string Password, string FirstName, string LastName);
+    public sealed record LoginRequest(string Email, string Password);
+    public sealed record AuthResponse(Guid UserId, string Email, string[] Roles, string AccessToken);
+
+    [HttpPost("register")]
+    public async Task<ActionResult<AuthResponse>> Register(RegisterRequest request)
+    {
+        if (string.IsNullOrWhiteSpace(request.Email) ||
+            string.IsNullOrWhiteSpace(request.Password) ||
+            string.IsNullOrWhiteSpace(request.FirstName) ||
+            string.IsNullOrWhiteSpace(request.LastName))
+        {
+            return BadRequest("Email, password, first name, and last name are required.");
+        }
+
+        var email = request.Email.Trim();
+
+        var exists = await _userManager.FindByEmailAsync(email);
+        if (exists is not null)
+            return BadRequest("Email already in use.");
+
+        var user = new AppUser
+        {
+            Id = Guid.NewGuid(),
+            Email = email,
+            UserName = email,
+            FirstName = request.FirstName.Trim(),
+            LastName = request.LastName.Trim()
+        };
+
+        var create = await _userManager.CreateAsync(user, request.Password);
+        if (!create.Succeeded)
+            return BadRequest(create.Errors.Select(e => e.Description));
+
+        // Everyone starts as User
+        var addRole = await _userManager.AddToRoleAsync(user, AppRoles.User);
+        if (!addRole.Succeeded)
+            return StatusCode(500, addRole.Errors.Select(e => e.Description));
+
+        var roles = await _userManager.GetRolesAsync(user);
+        var token = _jwt.Generate(user, roles);
+
+        return Ok(new AuthResponse(user.Id, user.Email!, roles.ToArray(), token));
+    }
+
+    [HttpPost("login")]
+    public async Task<ActionResult<AuthResponse>> Login(LoginRequest request)
+    {
+        if (string.IsNullOrWhiteSpace(request.Email) || string.IsNullOrWhiteSpace(request.Password))
+            return BadRequest("Email and password are required.");
+
+        var email = request.Email.Trim().ToLowerInvariant();
+
+        var user = await _userManager.FindByEmailAsync(email);
+        if (user is null)
+            return Unauthorized("Invalid credentials.");
+
+        // lockoutOnFailure = true (uses Identity lockout options you set in Program.cs)
+        var signIn = await _signInManager.CheckPasswordSignInAsync(user, request.Password, lockoutOnFailure: true);
+        if (!signIn.Succeeded)
+            return Unauthorized("Invalid credentials.");
+
+        var roles = await _userManager.GetRolesAsync(user);
+        var token = _jwt.Generate(user, roles);
+
+        return Ok(new AuthResponse(user.Id, user.Email!, roles.ToArray(), token));
+    }
+}

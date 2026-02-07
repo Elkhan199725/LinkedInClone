@@ -1,0 +1,123 @@
+﻿using Application.Common.Interfaces;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using MimeKit;
+
+namespace Infrastructure.Email;
+
+public sealed class SmtpEmailSender : IEmailSender
+{
+    private readonly SmtpSettings _settings;
+    private readonly ILogger<SmtpEmailSender> _logger;
+
+    public SmtpEmailSender(IOptions<SmtpSettings> options, ILogger<SmtpEmailSender> logger)
+    {
+        _settings = options.Value;
+        _logger = logger;
+
+        _logger.LogInformation(
+            "SMTP loaded: Host={Host}, Port={Port}, EnableSsl={EnableSsl}, Username={Username}, FromEmail={FromEmail}",
+            _settings.Host,
+            _settings.Port,
+            _settings.EnableSsl,
+            _settings.Username,
+            _settings.FromEmail);
+
+        if (!_settings.IsValid)
+        {
+            _logger.LogError(
+                "SMTP configuration INVALID - Host={Host}, Port={Port}, Username={Username}, PasswordSet={PasswordSet}",
+                _settings.Host,
+                _settings.Port,
+                _settings.Username,
+                !string.IsNullOrWhiteSpace(_settings.Password));
+        }
+    }
+
+    public async Task SendEmailAsync(string toEmail, string subject, string body, CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation("SMTP SendAsync called - To={ToEmail}, Subject={Subject}", toEmail, subject);
+
+        if (!_settings.IsValid)
+        {
+            var error = $"SMTP not configured: Host={_settings.Host}, Username={_settings.Username}";
+            _logger.LogError(error);
+            throw new InvalidOperationException(error);
+        }
+
+        var fromAddress = _settings.GetEffectiveFromEmail();
+
+        if (fromAddress != _settings.Username)
+        {
+            _logger.LogWarning(
+                "FromEmail ({FromEmail}) differs from Username ({Username}) - Gmail requires these to match",
+                fromAddress, _settings.Username);
+        }
+
+        var message = new MimeMessage();
+        message.From.Add(new MailboxAddress(_settings.FromName, fromAddress));
+        message.To.Add(new MailboxAddress(toEmail, toEmail));
+        message.Subject = subject;
+        message.Body = new BodyBuilder { HtmlBody = body }.ToMessageBody();
+
+        using var client = new SmtpClient();
+
+        try
+        {
+            _logger.LogDebug("Connecting to {Host}:{Port} with StartTls...", _settings.Host, _settings.Port);
+
+            await client.ConnectAsync(
+                _settings.Host,
+                _settings.Port,
+                SecureSocketOptions.StartTls,
+                cancellationToken);
+
+            _logger.LogDebug("Connected. Authenticating as {Username}...", _settings.Username);
+
+            await client.AuthenticateAsync(_settings.Username, _settings.Password, cancellationToken);
+
+            _logger.LogDebug("Authenticated. Sending message...");
+
+            await client.SendAsync(message, cancellationToken);
+
+            _logger.LogInformation("SMTP SUCCESS - Email sent to {ToEmail}", toEmail);
+        }
+        catch (AuthenticationException authEx)
+        {
+            _logger.LogError(authEx,
+                "SMTP AUTH FAILED - Type={ExType}, Message={Message}",
+                authEx.GetType().Name, authEx.Message);
+            throw;
+        }
+        catch (SmtpCommandException cmdEx)
+        {
+            _logger.LogError(cmdEx,
+                "SMTP COMMAND ERROR - StatusCode={StatusCode}, ErrorCode={ErrorCode}, Message={Message}",
+                cmdEx.StatusCode, cmdEx.ErrorCode, cmdEx.Message);
+            throw;
+        }
+        catch (SmtpProtocolException protoEx)
+        {
+            _logger.LogError(protoEx,
+                "SMTP PROTOCOL ERROR - Message={Message}",
+                protoEx.Message);
+            throw;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex,
+                "SMTP ERROR - Type={ExType}, Message={Message}, Inner={Inner}",
+                ex.GetType().Name, ex.Message, ex.InnerException?.Message);
+            throw;
+        }
+        finally
+        {
+            if (client.IsConnected)
+            {
+                await client.DisconnectAsync(true, cancellationToken);
+            }
+        }
+    }
+}

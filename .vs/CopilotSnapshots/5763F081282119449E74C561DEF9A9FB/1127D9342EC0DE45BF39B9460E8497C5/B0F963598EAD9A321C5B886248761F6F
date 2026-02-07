@@ -1,0 +1,83 @@
+﻿using Application.Common.Interfaces;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using MimeKit;
+
+namespace Infrastructure.Email;
+
+public sealed class SmtpEmailSender : IEmailSender
+{
+    private readonly SmtpSettings _settings;
+    private readonly ILogger<SmtpEmailSender> _logger;
+
+    public SmtpEmailSender(IOptions<SmtpSettings> options, ILogger<SmtpEmailSender> logger)
+    {
+        _settings = options.Value;
+        _logger = logger;
+
+        _logger.LogInformation(
+            "SMTP settings loaded: Host={Host}, Port={Port}, EnableSsl={EnableSsl}, Username={Username}, FromEmail={FromEmail}, PasswordLength={PasswordLength}",
+            _settings.Host,
+            _settings.Port,
+            _settings.EnableSsl,
+            _settings.Username,
+            _settings.FromEmail,
+            _settings.Password?.Length ?? 0);
+    }
+
+    public async Task SendEmailAsync(string toEmail, string subject, string body, CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation(
+            "SMTP attempting: Host={Host} Port={Port} SecureOption=StartTls Username={Username} FromEmail={FromEmail}",
+            _settings.Host,
+            _settings.Port,
+            _settings.Username,
+            _settings.FromEmail);
+
+        var message = new MimeMessage();
+        message.From.Add(new MailboxAddress(_settings.FromName ?? "LinkedInClone", _settings.FromEmail));
+        message.To.Add(MailboxAddress.Parse(toEmail));
+        message.Subject = subject;
+        message.Body = new BodyBuilder { HtmlBody = body }.ToMessageBody();
+
+        using var client = new SmtpClient();
+
+        client.AuthenticationMechanisms.Remove("XOAUTH2");
+
+        client.Timeout = 20000;
+
+        try
+        {
+            await client.ConnectAsync(_settings.Host, _settings.Port, SecureSocketOptions.StartTls, cancellationToken);
+
+            _logger.LogInformation(
+                "SMTP connected: IsSecure={IsSecure} IsConnected={IsConnected}",
+                client.IsSecure,
+                client.IsConnected);
+
+            var mechanisms = string.Join(", ", client.AuthenticationMechanisms);
+            _logger.LogInformation("SMTP auth mechanisms available: {Mechanisms}", mechanisms);
+
+            await client.AuthenticateAsync(_settings.Username, _settings.Password, cancellationToken);
+
+            _logger.LogInformation("SMTP authenticated successfully");
+
+            await client.SendAsync(message, cancellationToken);
+
+            _logger.LogInformation("SMTP send SUCCESS to {ToEmail}", toEmail);
+
+            await client.DisconnectAsync(true, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex,
+                "SMTP FAILED: Type={ExType} Message={Message} Inner={Inner}",
+                ex.GetType().Name,
+                ex.Message,
+                ex.InnerException?.Message);
+            throw;
+        }
+    }
+}

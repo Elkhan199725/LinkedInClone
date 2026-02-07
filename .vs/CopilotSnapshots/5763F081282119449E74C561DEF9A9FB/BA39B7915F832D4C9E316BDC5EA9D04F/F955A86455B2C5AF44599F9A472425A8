@@ -1,0 +1,19 @@
+﻿{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost,1433;Database=LinkedInCloneDb;User Id=sa;Password=__SQL_SA_PASSWORD__;TrustServerCertificate=True;"
+  },
+  "SeedAdmin": {
+    "Email": "superadmin@local.test"
+  },
+  "Jwt": {
+    "Key": ""
+  },
+  "SmtpSettings": {
+    "Host": "smtp.gmail.com",
+    "Port": 587,
+    "EnableSsl": true,
+    "Username": "memmedlielxan40@gmail.com",
+    "FromEmail": "memmedlielxan40@gmail.com",
+    "FromName": "LinkedInClone"
+  }
+}

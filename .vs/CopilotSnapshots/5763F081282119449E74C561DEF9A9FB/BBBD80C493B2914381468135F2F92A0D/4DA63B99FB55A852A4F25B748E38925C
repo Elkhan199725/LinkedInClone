@@ -1,0 +1,114 @@
+﻿using Application.Common.Interfaces;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using MimeKit;
+
+namespace Infrastructure.Email;
+
+public sealed class SmtpEmailSender : IEmailSender
+{
+    private readonly SmtpSettings _settings;
+    private readonly ILogger<SmtpEmailSender> _logger;
+
+    public SmtpEmailSender(IOptions<SmtpSettings> settings, ILogger<SmtpEmailSender> logger)
+    {
+        _settings = settings.Value;
+        _logger = logger;
+
+        _logger.LogInformation(
+            "SMTP configuration loaded - Host: {Host}, Port: {Port}, EnableSsl: {EnableSsl}, Username: {Username}",
+            _settings.Host,
+            _settings.Port,
+            _settings.EnableSsl,
+            _settings.Username);
+
+        if (!_settings.IsValid)
+        {
+            _logger.LogWarning("SMTP configuration is incomplete! Check Host, Port, Username, and Password settings.");
+        }
+    }
+
+    public async Task SendEmailAsync(string toEmail, string subject, string body, CancellationToken cancellationToken = default)
+    {
+        if (!_settings.IsValid)
+        {
+            _logger.LogError("SMTP send aborted - configuration is invalid (Host: {Host}, Username: {Username})",
+                _settings.Host, _settings.Username);
+            throw new InvalidOperationException("SMTP is not configured properly. Check appsettings.");
+        }
+
+        _logger.LogInformation("SMTP send attempt - To: {ToEmail}, Subject: {Subject}", toEmail, subject);
+
+        var message = new MimeMessage();
+        message.From.Add(new MailboxAddress(_settings.FromName, _settings.GetFromEmail()));
+        message.To.Add(new MailboxAddress(toEmail, toEmail));
+        message.Subject = subject;
+
+        var bodyBuilder = new BodyBuilder
+        {
+            HtmlBody = body
+        };
+        message.Body = bodyBuilder.ToMessageBody();
+
+        using var client = new SmtpClient();
+
+        try
+        {
+            _logger.LogDebug("Connecting to SMTP server {Host}:{Port}...", _settings.Host, _settings.Port);
+
+            var secureSocketOptions = _settings.Port switch
+            {
+                465 => SecureSocketOptions.SslOnConnect,
+                587 => SecureSocketOptions.StartTls,
+                _ => _settings.EnableSsl ? SecureSocketOptions.StartTls : SecureSocketOptions.None
+            };
+
+            await client.ConnectAsync(_settings.Host, _settings.Port, secureSocketOptions, cancellationToken);
+            _logger.LogDebug("Connected to SMTP server successfully");
+
+            _logger.LogDebug("Authenticating with SMTP server...");
+            await client.AuthenticateAsync(_settings.Username, _settings.Password, cancellationToken);
+            _logger.LogDebug("Authentication successful");
+
+            _logger.LogDebug("Sending email...");
+            await client.SendAsync(message, cancellationToken);
+
+            _logger.LogInformation("SMTP send SUCCESS - Email delivered to {ToEmail}", toEmail);
+        }
+        catch (SmtpCommandException smtpEx)
+        {
+            _logger.LogError(
+                "SMTP COMMAND ERROR - StatusCode: {StatusCode}, ErrorCode: {ErrorCode}, Message: {Message}",
+                smtpEx.StatusCode, smtpEx.ErrorCode, smtpEx.Message);
+            throw;
+        }
+        catch (SmtpProtocolException protocolEx)
+        {
+            _logger.LogError("SMTP PROTOCOL ERROR - Message: {Message}", protocolEx.Message);
+            throw;
+        }
+        catch (AuthenticationException authEx)
+        {
+            _logger.LogError("SMTP AUTHENTICATION FAILED - Message: {Message}", authEx.Message);
+            throw;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(
+                ex,
+                "SMTP SEND FAILED - Type: {ExceptionType}, Message: {Message}",
+                ex.GetType().Name, ex.Message);
+            throw;
+        }
+        finally
+        {
+            if (client.IsConnected)
+            {
+                await client.DisconnectAsync(true, cancellationToken);
+                _logger.LogDebug("Disconnected from SMTP server");
+            }
+        }
+    }
+}

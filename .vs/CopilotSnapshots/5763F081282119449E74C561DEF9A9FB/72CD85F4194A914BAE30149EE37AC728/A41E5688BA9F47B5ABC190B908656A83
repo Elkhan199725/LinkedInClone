@@ -1,0 +1,43 @@
+﻿using Application.Common.Exceptions;
+using Application.Common.Interfaces;
+using Application.Profiles.Commands;
+using Domain.Entities;
+using MediatR;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
+
+namespace Application.Profiles.Handlers;
+
+public sealed class DeleteMyAccountCommandHandler : IRequestHandler<DeleteMyAccountCommand, bool>
+{
+    private readonly UserManager<AppUser> _userManager;
+    private readonly IAccountDeletionService _accountDeletionService;
+    private readonly ILogger<DeleteMyAccountCommandHandler> _logger;
+
+    public DeleteMyAccountCommandHandler(
+        UserManager<AppUser> userManager,
+        IAccountDeletionService accountDeletionService,
+        ILogger<DeleteMyAccountCommandHandler> logger)
+    {
+        _userManager = userManager;
+        _accountDeletionService = accountDeletionService;
+        _logger = logger;
+    }
+
+    public async Task<bool> Handle(DeleteMyAccountCommand command, CancellationToken cancellationToken)
+    {
+        _logger.LogInformation("User {UserId} requested account deletion", command.UserId);
+
+        var user = await _userManager.FindByIdAsync(command.UserId.ToString());
+        if (user is null)
+        {
+            _logger.LogWarning("Delete account failed: user {UserId} not found", command.UserId);
+            throw new NotFoundException("User", command.UserId);
+        }
+
+        await _accountDeletionService.DeleteAccountAsync(command.UserId, cancellationToken);
+
+        _logger.LogInformation("Successfully deleted account for user {UserId}", command.UserId);
+        return true;
+    }
+}

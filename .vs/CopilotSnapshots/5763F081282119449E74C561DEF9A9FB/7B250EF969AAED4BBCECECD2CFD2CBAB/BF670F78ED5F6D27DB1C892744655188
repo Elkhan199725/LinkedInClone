@@ -1,0 +1,79 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
+
+namespace Infrastructure.Persistence;
+
+/// <summary>
+/// Design-time factory for EF Core migrations.
+/// Reads connection string from appsettings.Development.json in the Api project.
+/// </summary>
+public sealed class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
+{
+    public ApplicationDbContext CreateDbContext(string[] args)
+    {
+        var apiDir = FindApiDirectory();
+
+        Console.WriteLine($"[EF Design-Time] Using Api directory: {apiDir}");
+
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(apiDir)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+            .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: false)
+            .Build();
+
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        
+        if (string.IsNullOrWhiteSpace(connectionString))
+            throw new InvalidOperationException(
+                "Connection string 'DefaultConnection' not found. " +
+                "Ensure appsettings.Development.json exists in Api project with a valid connection string.");
+
+        Console.WriteLine($"[EF Design-Time] Connection string found (length: {connectionString.Length})");
+
+        var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+            .UseSqlServer(connectionString);
+
+        return new ApplicationDbContext(optionsBuilder.Options);
+    }
+
+    private static string FindApiDirectory()
+    {
+        // Try multiple paths to find Api directory with appsettings.json
+        var candidates = new List<string>();
+
+        var currentDir = Directory.GetCurrentDirectory();
+        candidates.Add(currentDir);
+        candidates.Add(Path.Combine(currentDir, "Api"));
+        candidates.Add(Path.Combine(currentDir, "..", "Api"));
+
+        var baseDir = AppContext.BaseDirectory;
+        candidates.Add(baseDir);
+        
+        // Walk up from current directory looking for Api folder
+        var dir = new DirectoryInfo(currentDir);
+        while (dir != null)
+        {
+            var apiPath = Path.Combine(dir.FullName, "Api");
+            if (Directory.Exists(apiPath))
+                candidates.Add(apiPath);
+            dir = dir.Parent;
+        }
+
+        foreach (var path in candidates.Distinct(StringComparer.OrdinalIgnoreCase))
+        {
+            if (!Directory.Exists(path)) continue;
+
+            var appsettings = Path.Combine(path, "appsettings.json");
+            var devSettings = Path.Combine(path, "appsettings.Development.json");
+            
+            if (File.Exists(appsettings) && File.Exists(devSettings))
+            {
+                return path;
+            }
+        }
+
+        throw new DirectoryNotFoundException(
+            $"Api directory with appsettings.json not found. Searched: {string.Join(", ", candidates)}");
+    }
+}

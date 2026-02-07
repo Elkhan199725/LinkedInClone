@@ -1,0 +1,32 @@
+﻿using Application.Common.Exceptions;
+using Application.Common.Interfaces;
+using Application.Profiles.Commands;
+using MediatR;
+
+namespace Application.Profiles.Handlers;
+
+public sealed class DeleteMyAccountCommandHandler : IRequestHandler<DeleteMyAccountCommand, bool>
+{
+    private readonly IUserProfileRepository _userProfileRepository;
+    private readonly IAccountDeletionService _accountDeletionService;
+
+    public DeleteMyAccountCommandHandler(
+        IUserProfileRepository userProfileRepository,
+        IAccountDeletionService accountDeletionService)
+    {
+        _userProfileRepository = userProfileRepository;
+        _accountDeletionService = accountDeletionService;
+    }
+
+    public async Task<bool> Handle(DeleteMyAccountCommand command, CancellationToken cancellationToken)
+    {
+        var profile = await _userProfileRepository.GetByIdAsync(command.UserId, cancellationToken);
+
+        if (profile is null)
+            throw new NotFoundException("UserProfile", command.UserId);
+
+        await _accountDeletionService.DeleteAccountAsync(command.UserId, cancellationToken);
+
+        return true;
+    }
+}

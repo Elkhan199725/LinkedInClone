@@ -1,0 +1,82 @@
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
+namespace Infrastructure.Persistence.Services;
+
+public sealed class AccountDeletionService : IAccountDeletionService
+{
+    private readonly ApplicationDbContext _context;
+    private readonly UserManager<AppUser> _userManager;
+
+    public AccountDeletionService(
+        ApplicationDbContext context,
+        UserManager<AppUser> userManager)
+    {
+        _context = context;
+        _userManager = userManager;
+    }
+
+    public async Task DeleteAccountAsync(Guid userId, CancellationToken cancellationToken = default)
+    {
+        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
+
+        try
+        {
+            var userPosts = await _context.Posts
+                .Where(p => p.AuthorId == userId)
+                .Select(p => p.Id)
+                .ToListAsync(cancellationToken);
+
+            if (userPosts.Count > 0)
+            {
+                await _context.Reactions
+                    .Where(r => userPosts.Contains(r.PostId))
+                    .ExecuteDeleteAsync(cancellationToken);
+
+                await _context.Comments
+                    .Where(c => userPosts.Contains(c.PostId))
+                    .ExecuteDeleteAsync(cancellationToken);
+
+                await _context.PostMedia
+                    .Where(m => userPosts.Contains(m.PostId))
+                    .ExecuteDeleteAsync(cancellationToken);
+
+                await _context.Posts
+                    .Where(p => p.AuthorId == userId)
+                    .ExecuteDeleteAsync(cancellationToken);
+            }
+
+            await _context.Reactions
+                .Where(r => r.UserId == userId)
+                .ExecuteDeleteAsync(cancellationToken);
+
+            await _context.Comments
+                .Where(c => c.AuthorId == userId)
+                .ExecuteDeleteAsync(cancellationToken);
+
+            await _context.UserProfiles
+                .Where(up => up.AppUserId == userId)
+                .ExecuteDeleteAsync(cancellationToken);
+
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user is not null)
+            {
+                var result = await _userManager.DeleteAsync(user);
+                if (!result.Succeeded)
+                {
+                    var errors = string.Join("; ", result.Errors.Select(e => e.Description));
+                    throw new InvalidOperationException($"Failed to delete user: {errors}");
+                }
+            }
+
+            await transaction.CommitAsync(cancellationToken);
+        }
+        catch
+        {
+            await transaction.RollbackAsync(cancellationToken);
+            throw;
+        }
+    }
+}

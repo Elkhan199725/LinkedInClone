@@ -1,0 +1,87 @@
+﻿using Application.Common.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+
+namespace Api.Controllers;
+
+[ApiController]
+[Route("api/dev")]
+public sealed class DevController : ControllerBase
+{
+    private readonly IEmailSender _emailSender;
+    private readonly IHostEnvironment _environment;
+    private readonly ILogger<DevController> _logger;
+
+    public DevController(
+        IEmailSender emailSender,
+        IHostEnvironment environment,
+        ILogger<DevController> logger)
+    {
+        _emailSender = emailSender;
+        _environment = environment;
+        _logger = logger;
+    }
+
+    public sealed record TestEmailRequest(string ToEmail);
+    public sealed record TestEmailResponse(bool Success, string Message);
+
+    [HttpPost("test-email")]
+    public async Task<ActionResult<TestEmailResponse>> TestEmail(
+        [FromBody] TestEmailRequest request,
+        CancellationToken cancellationToken)
+    {
+        if (!_environment.IsDevelopment())
+        {
+            _logger.LogWarning("Test email endpoint called in non-development environment");
+            return NotFound();
+        }
+
+        if (string.IsNullOrWhiteSpace(request.ToEmail))
+        {
+            return BadRequest(new TestEmailResponse(false, "Email address is required"));
+        }
+
+        _logger.LogInformation("DEV: Test email requested to {ToEmail}", request.ToEmail);
+
+        try
+        {
+            var subject = "LinkedInClone - Test Email";
+            var body = @"
+<!DOCTYPE html>
+<html>
+<head><meta charset='utf-8'></head>
+<body style='font-family: Arial, sans-serif; padding: 20px;'>
+    <h2 style='color: #0077B5;'>Test Email Successful!</h2>
+    <p>If you're reading this, your SMTP configuration is working correctly.</p>
+    <p><strong>Timestamp:</strong> " + DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss UTC") + @"</p>
+    <p>Best regards,<br/>LinkedInClone Dev Team</p>
+</body>
+</html>";
+
+            await _emailSender.SendEmailAsync(request.ToEmail, subject, body, cancellationToken);
+
+            _logger.LogInformation("DEV: Test email sent successfully to {ToEmail}", request.ToEmail);
+            return Ok(new TestEmailResponse(true, $"Test email sent successfully to {request.ToEmail}"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "DEV: Test email failed to {ToEmail}", request.ToEmail);
+            return Ok(new TestEmailResponse(false, $"Failed to send email: {ex.Message}"));
+        }
+    }
+
+    [HttpGet("smtp-status")]
+    public IActionResult GetSmtpStatus()
+    {
+        if (!_environment.IsDevelopment())
+        {
+            return NotFound();
+        }
+
+        return Ok(new
+        {
+            environment = _environment.EnvironmentName,
+            message = "Use POST /api/dev/test-email to test SMTP configuration"
+        });
+    }
+}

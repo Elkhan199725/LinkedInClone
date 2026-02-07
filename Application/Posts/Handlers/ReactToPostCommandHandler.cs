@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Posts.Handlers;
 
-public sealed class ReactToPostCommandHandler : IRequestHandler<ReactToPostCommand, ReactionResponse>
+public sealed class ReactToPostCommandHandler : IRequestHandler<ReactToPostCommand, ReactionResponse?>
 {
     private readonly IPostRepository _postRepository;
     private readonly IReactionRepository _reactionRepository;
@@ -20,7 +20,7 @@ public sealed class ReactToPostCommandHandler : IRequestHandler<ReactToPostComma
         _reactionRepository = reactionRepository;
     }
 
-    public async Task<ReactionResponse> Handle(ReactToPostCommand command, CancellationToken cancellationToken)
+    public async Task<ReactionResponse?> Handle(ReactToPostCommand command, CancellationToken cancellationToken)
     {
         var post = await _postRepository.GetByIdAsync(command.PostId, cancellationToken);
 
@@ -34,6 +34,13 @@ public sealed class ReactToPostCommandHandler : IRequestHandler<ReactToPostComma
 
         if (existingReaction is not null)
         {
+            if (existingReaction.Type == command.Type)
+            {
+                _reactionRepository.Remove(existingReaction);
+                await _reactionRepository.SaveChangesAsync(cancellationToken);
+                return null;
+            }
+
             existingReaction.Type = command.Type;
             existingReaction.UpdatedAt = DateTime.UtcNow;
 

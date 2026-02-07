@@ -865,11 +865,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus\\Desktop\\LinkedInCore\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\Asus\\Desktop\\LinkedInClone\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

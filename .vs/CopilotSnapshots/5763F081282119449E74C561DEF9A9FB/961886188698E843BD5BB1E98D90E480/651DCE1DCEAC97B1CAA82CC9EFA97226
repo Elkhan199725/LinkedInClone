@@ -1,0 +1,42 @@
+﻿using Application.Common.Exceptions;
+using Application.Common.Interfaces;
+using Application.Profiles.Commands;
+using Application.Profiles.Dtos;
+using AutoMapper;
+using Domain.Entities;
+using MediatR;
+
+namespace Application.Profiles.Handlers;
+
+public sealed class UpdateMyProfileCommandHandler : IRequestHandler<UpdateMyProfileCommand, MyProfileResponse>
+{
+    private readonly IBaseRepository<UserProfile> _repository;
+    private readonly IMapper _mapper;
+
+    public UpdateMyProfileCommandHandler(IBaseRepository<UserProfile> repository, IMapper mapper)
+    {
+        _repository = repository;
+        _mapper = mapper;
+    }
+
+    public async Task<MyProfileResponse> Handle(UpdateMyProfileCommand command, CancellationToken cancellationToken)
+    {
+        var profile = await _repository.GetAsync(
+            p => p.AppUserId == command.AppUserId,
+            cancellationToken);
+
+        if (profile is null)
+            throw new NotFoundException(nameof(UserProfile), command.AppUserId);
+
+        // Map request fields to existing entity
+        _mapper.Map(command.Request, profile);
+
+        // Set UpdatedAt timestamp
+        profile.UpdatedAt = DateTime.UtcNow;
+
+        _repository.Update(profile);
+        await _repository.SaveChangesAsync(cancellationToken);
+
+        return _mapper.Map<MyProfileResponse>(profile);
+    }
+}

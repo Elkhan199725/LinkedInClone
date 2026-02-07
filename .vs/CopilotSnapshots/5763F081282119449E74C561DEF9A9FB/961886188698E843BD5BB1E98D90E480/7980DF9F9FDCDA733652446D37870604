@@ -1,0 +1,66 @@
+﻿using Domain.Constants;
+using Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+
+namespace Infrastructure.Persistence;
+
+public static class IdentitySeeder
+{
+    public static async Task SeedAsync(
+        RoleManager<IdentityRole<Guid>> roleManager,
+        UserManager<AppUser> userManager,
+        IConfiguration config)
+    {
+        // 1) Seed roles
+        foreach (var role in AppRoles.All)
+        {
+            if (await roleManager.RoleExistsAsync(role))
+                continue;
+
+            var roleResult = await roleManager.CreateAsync(new IdentityRole<Guid>(role));
+            if (!roleResult.Succeeded)
+                throw new InvalidOperationException($"Failed to create role '{role}': {FormatErrors(roleResult.Errors)}");
+        }
+
+        // 2) Seed SuperAdmin (optional; only if configured)
+        var seed = config.GetSection("SeedAdmin");
+        var emailRaw = seed["Email"];
+        var password = seed["Password"];
+
+        if (string.IsNullOrWhiteSpace(emailRaw) || string.IsNullOrWhiteSpace(password))
+            return; // no seed admin configured
+
+        var email = emailRaw.Trim().ToLowerInvariant();
+
+        var user = await userManager.FindByEmailAsync(email);
+        if (user is null)
+        {
+            user = new AppUser
+            {
+                Id = Guid.NewGuid(),
+                Email = email,
+                UserName = email,
+                FirstName = seed["FirstName"]?.Trim() ?? "Super",
+                LastName = seed["LastName"]?.Trim() ?? "Admin",
+                CreatedAt = DateTime.UtcNow
+            };
+
+            var created = await userManager.CreateAsync(user, password);
+            if (!created.Succeeded)
+                throw new InvalidOperationException($"Failed to create seeded SuperAdmin user '{email}': {FormatErrors(created.Errors)}");
+        }
+
+        // Ensure SuperAdmin role exists on this user
+        var currentRoles = await userManager.GetRolesAsync(user);
+        if (!currentRoles.Contains(AppRoles.SuperAdmin))
+        {
+            var addRole = await userManager.AddToRoleAsync(user, AppRoles.SuperAdmin);
+            if (!addRole.Succeeded)
+                throw new InvalidOperationException($"Failed to assign '{AppRoles.SuperAdmin}' role to '{email}': {FormatErrors(addRole.Errors)}");
+        }
+    }
+
+    private static string FormatErrors(IEnumerable<IdentityError> errors)
+        => string.Join("; ", errors.Select(e => e.Description));
+}

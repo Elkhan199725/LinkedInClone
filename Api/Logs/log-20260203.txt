@@ -1,0 +1,96 @@
+2026-02-03 13:54:45.935 +04:00 [INF] LinkedInClone API started successfully
+2026-02-03 13:54:47.506 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 25.1900 ms
+2026-02-03 15:46:07.663 +04:00 [INF] LinkedInClone API started successfully
+2026-02-03 15:46:07.759 +04:00 [WRN] No XML encryptor configured. Key {cc7292c5-39de-429b-b721-3f5e3b3932c4} may be persisted to storage in unencrypted form.
+2026-02-03 15:49:55.955 +04:00 [INF] LinkedInClone API started successfully
+2026-02-03 15:52:03.895 +04:00 [INF] HTTP GET /swagger responded 301 in 57.9658 ms
+2026-02-03 15:52:04.201 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 229.4855 ms
+2026-02-03 15:52:04.309 +04:00 [INF] HTTP GET /swagger/index.js responded 200 in 2.0395 ms
+2026-02-03 15:52:04.349 +04:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 51.8833 ms
+2026-02-03 15:52:04.349 +04:00 [INF] HTTP GET /swagger/index.css responded 200 in 51.7911 ms
+2026-02-03 15:52:04.353 +04:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 46.9070 ms
+2026-02-03 15:52:04.387 +04:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 86.9955 ms
+2026-02-03 15:52:04.616 +04:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 4.4582 ms
+2026-02-03 15:52:04.929 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 343.5509 ms
+2026-02-03 15:53:34.871 +04:00 [WRN] Failed to determine the https port for redirect.
+2026-02-03 15:53:38.958 +04:00 [INF] HTTP POST /api/Auth/register responded 200 in 4104.9759 ms
+2026-02-03 16:34:49.690 +04:00 [INF] LinkedInClone API started successfully
+2026-02-03 16:35:20.656 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 202.7470 ms
+2026-02-03 16:35:21.231 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 277.8310 ms
+2026-02-03 16:36:00.148 +04:00 [WRN] Failed to determine the https port for redirect.
+2026-02-03 16:36:01.523 +04:00 [INF] HTTP POST /api/Auth/register responded 200 in 1409.9317 ms
+2026-02-03 16:36:14.945 +04:00 [INF] HTTP GET /api/Me responded 401 in 38.2573 ms
+2026-02-03 16:37:06.779 +04:00 [INF] HTTP POST /api/Auth/login responded 200 in 334.8644 ms
+2026-02-03 16:37:10.289 +04:00 [INF] HTTP GET /api/Me responded 401 in 4.9561 ms
+2026-02-03 17:00:24.288 +04:00 [INF] LinkedInClone API started successfully
+2026-02-03 17:00:45.939 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 258.8898 ms
+2026-02-03 17:00:46.482 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 361.5949 ms
+2026-02-03 17:01:31.452 +04:00 [WRN] Failed to determine the https port for redirect.
+2026-02-03 17:01:34.707 +04:00 [INF] HTTP POST /api/Auth/login responded 200 in 3293.6528 ms
+2026-02-03 17:04:05.640 +04:00 [INF] HTTP GET /api/Me responded 401 in 29.2263 ms
+2026-02-03 17:04:17.579 +04:00 [INF] HTTP GET /api/Me responded 401 in 20.2943 ms
+2026-02-03 17:04:56.398 +04:00 [INF] HTTP POST /api/Auth/login responded 200 in 248.4789 ms
+2026-02-03 17:05:12.741 +04:00 [INF] HTTP GET /api/Me responded 401 in 7.9491 ms
+2026-02-03 17:05:14.319 +04:00 [INF] HTTP GET /api/Me responded 401 in 0.7575 ms
+2026-02-03 17:05:22.136 +04:00 [INF] HTTP GET /api/Me responded 401 in 1.2008 ms
+2026-02-03 17:05:23.505 +04:00 [INF] HTTP GET /api/Me responded 401 in 0.5960 ms
+2026-02-03 17:07:49.211 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.5837 ms
+2026-02-03 17:07:49.518 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 21.2123 ms
+2026-02-03 17:08:24.981 +04:00 [INF] HTTP POST /api/Auth/login responded 200 in 249.7084 ms
+2026-02-03 17:08:48.570 +04:00 [INF] HTTP GET /api/Me responded 401 in 1.6309 ms
+2026-02-03 17:36:48.590 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.6156 ms
+2026-02-03 17:36:48.793 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 14.5219 ms
+2026-02-03 17:37:49.707 +04:00 [INF] LinkedInClone API started successfully
+2026-02-03 17:38:21.256 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 201.2266 ms
+2026-02-03 17:38:21.678 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 269.2227 ms
+2026-02-03 17:38:52.901 +04:00 [WRN] Failed to determine the https port for redirect.
+2026-02-03 17:38:53.547 +04:00 [INF] HTTP POST /api/Auth/login responded 200 in 670.0982 ms
+2026-02-03 17:39:18.754 +04:00 [INF] HTTP GET /api/Me responded 401 in 27.2539 ms
+2026-02-03 17:39:46.685 +04:00 [INF] HTTP GET /api/Me responded 401 in 15.8668 ms
+2026-02-03 17:39:49.926 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.2258 ms
+2026-02-03 17:39:50.078 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 13.0246 ms
+2026-02-03 17:42:50.825 +04:00 [INF] LinkedInClone API started successfully
+2026-02-03 17:43:01.088 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 301.8018 ms
+2026-02-03 17:43:01.590 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 325.8368 ms
+2026-02-03 17:43:36.142 +04:00 [WRN] Failed to determine the https port for redirect.
+2026-02-03 17:43:37.643 +04:00 [INF] HTTP POST /api/Auth/register responded 200 in 1525.1324 ms
+2026-02-03 17:44:15.999 +04:00 [INF] HTTP POST /api/Auth/login responded 200 in 270.6130 ms
+2026-02-03 17:44:34.185 +04:00 [INF] HTTP GET /api/Me responded 401 in 23.2405 ms
+2026-02-03 17:46:24.308 +04:00 [INF] HTTP GET /api/Me responded 401 in 5.4447 ms
+2026-02-03 17:46:26.875 +04:00 [INF] HTTP GET /api/Me responded 401 in 4.0086 ms
+2026-02-03 17:46:35.218 +04:00 [INF] HTTP GET /api/Me responded 401 in 2.9493 ms
+2026-02-03 17:49:10.078 +04:00 [INF] LinkedInClone API started successfully
+2026-02-03 17:49:36.418 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 230.8598 ms
+2026-02-03 17:49:36.876 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 292.3873 ms
+2026-02-03 17:50:03.624 +04:00 [WRN] Failed to determine the https port for redirect.
+2026-02-03 17:50:05.303 +04:00 [INF] HTTP POST /api/Auth/login responded 200 in 1696.6027 ms
+2026-02-03 17:50:20.593 +04:00 [INF] HTTP GET /api/Me responded 200 in 115.9551 ms
+2026-02-03 17:50:56.316 +04:00 [INF] HTTP POST /api/Admin/set-role responded 403 in 25.1372 ms
+2026-02-03 17:51:34.040 +04:00 [INF] HTTP POST /api/Auth/login responded 200 in 305.3395 ms
+2026-02-03 17:51:50.778 +04:00 [INF] HTTP POST /api/Admin/set-role responded 200 in 958.4106 ms
+2026-02-03 17:52:16.833 +04:00 [INF] HTTP GET /api/Me responded 200 in 2.2532 ms
+2026-02-03 18:45:09.133 +04:00 [INF] LinkedInClone API started successfully
+2026-02-03 18:47:32.204 +04:00 [INF] LinkedInClone API started successfully
+2026-02-03 18:49:23.885 +04:00 [INF] LinkedInClone API started successfully
+2026-02-03 18:54:24.568 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 248.7868 ms
+2026-02-03 18:54:24.936 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 213.7300 ms
+2026-02-03 18:55:18.968 +04:00 [WRN] Failed to determine the https port for redirect.
+2026-02-03 18:55:20.615 +04:00 [INF] HTTP POST /api/Auth/register responded 200 in 1667.7963 ms
+2026-02-03 18:55:32.567 +04:00 [INF] HTTP POST /api/Auth/register responded 400 in 299.5989 ms
+2026-02-03 18:55:43.311 +04:00 [INF] HTTP POST /api/Auth/register responded 400 in 60.3597 ms
+2026-02-03 18:56:10.028 +04:00 [INF] HTTP POST /api/Auth/login responded 200 in 244.0420 ms
+2026-02-03 18:56:25.962 +04:00 [INF] HTTP GET /api/Me responded 401 in 25.9413 ms
+2026-02-03 18:56:33.528 +04:00 [INF] HTTP GET /api/Me responded 200 in 153.7617 ms
+2026-02-03 18:57:31.871 +04:00 [INF] HTTP POST /api/Auth/login responded 200 in 201.3914 ms
+2026-02-03 18:58:04.419 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.7990 ms
+2026-02-03 18:58:04.659 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 15.6014 ms
+2026-02-03 18:58:09.535 +04:00 [INF] HTTP GET /api/Me responded 401 in 5.2589 ms
+2026-02-03 18:58:17.472 +04:00 [INF] HTTP GET /api/Me responded 200 in 1.0610 ms
+2026-02-03 18:59:20.134 +04:00 [INF] HTTP POST /api/Admin/set-role responded 200 in 277.7722 ms
+2026-02-03 18:59:27.608 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 0.4897 ms
+2026-02-03 18:59:27.734 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 6.6712 ms
+2026-02-03 18:59:48.613 +04:00 [INF] HTTP POST /api/Auth/login responded 200 in 185.8573 ms
+2026-02-03 18:59:59.526 +04:00 [INF] HTTP GET /api/Me responded 401 in 0.5717 ms
+2026-02-03 19:00:06.653 +04:00 [INF] HTTP GET /api/Me responded 200 in 1.9196 ms
+2026-02-03 19:10:00.310 +04:00 [INF] HTTP GET /swagger/index.html responded 200 in 1.0190 ms
+2026-02-03 19:10:00.492 +04:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 6.1552 ms

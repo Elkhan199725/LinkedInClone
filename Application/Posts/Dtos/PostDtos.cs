@@ -11,7 +11,8 @@ public sealed record CreatePostRequest(
 
 public sealed record UpdatePostRequest(
     string? Text,
-    PostVisibility Visibility
+    PostVisibility Visibility,
+    IReadOnlyList<AddPostMediaRequest>? Media = null
 );
 
 public sealed record AddPostMediaRequest(

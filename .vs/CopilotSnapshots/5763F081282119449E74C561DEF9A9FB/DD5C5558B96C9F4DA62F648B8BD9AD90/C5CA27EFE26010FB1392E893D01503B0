@@ -1,0 +1,8 @@
+﻿namespace Domain.Enums;
+
+public enum PostVisibility
+{
+    Public = 0,
+    Connections = 1,
+    Private = 2
+}

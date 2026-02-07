@@ -1,0 +1,121 @@
+﻿using Application.Common.Interfaces;
+using Infrastructure.Email;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+
+namespace Api.Controllers;
+
+[ApiController]
+[Route("api/dev")]
+public sealed class DevController : ControllerBase
+{
+    private readonly IEmailSender _emailSender;
+    private readonly SmtpSettings _smtpSettings;
+    private readonly IWebHostEnvironment _environment;
+    private readonly ILogger<DevController> _logger;
+
+    public DevController(
+        IEmailSender emailSender,
+        IOptions<SmtpSettings> smtpSettings,
+        IWebHostEnvironment environment,
+        ILogger<DevController> logger)
+    {
+        _emailSender = emailSender;
+        _smtpSettings = smtpSettings.Value;
+        _environment = environment;
+        _logger = logger;
+    }
+
+    [HttpGet("smtp-status")]
+    public IActionResult GetSmtpStatus()
+    {
+        if (!_environment.IsDevelopment())
+            return NotFound();
+
+        return Ok(new
+        {
+            environment = _environment.EnvironmentName,
+            isValid = _smtpSettings.IsValid,
+            host = _smtpSettings.Host,
+            port = _smtpSettings.Port,
+            enableSsl = _smtpSettings.EnableSsl,
+            username = _smtpSettings.Username,
+            fromEmail = _smtpSettings.FromEmail,
+            effectiveFromEmail = _smtpSettings.GetEffectiveFromEmail(),
+            passwordSet = !string.IsNullOrWhiteSpace(_smtpSettings.Password),
+            passwordLength = _smtpSettings.Password?.Length ?? 0
+        });
+    }
+
+    public sealed record TestEmailRequest(string ToEmail);
+
+    [HttpPost("test-email")]
+    public async Task<IActionResult> TestEmail(
+        [FromBody] TestEmailRequest request,
+        CancellationToken cancellationToken)
+    {
+        if (!_environment.IsDevelopment())
+            return NotFound();
+
+        if (string.IsNullOrWhiteSpace(request.ToEmail))
+            return BadRequest(new { success = false, error = "toEmail is required" });
+
+        _logger.LogInformation("Test email requested to {ToEmail}", request.ToEmail);
+
+        try
+        {
+            var subject = "LinkedInClone SMTP Test";
+            var body = $@"
+<html><body>
+<h2>SMTP Test Successful</h2>
+<p>Time: {DateTime.UtcNow:O}</p>
+<p>Host: {_smtpSettings.Host}:{_smtpSettings.Port}</p>
+<p>From: {_smtpSettings.GetEffectiveFromEmail()}</p>
+</body></html>";
+
+            await _emailSender.SendEmailAsync(request.ToEmail, subject, body, cancellationToken);
+
+            return Ok(new
+            {
+                success = true,
+                message = $"Email sent to {request.ToEmail}"
+            });
+        }
+        catch (AuthenticationException authEx)
+        {
+            _logger.LogError(authEx, "SMTP Auth failed");
+            return Ok(new
+            {
+                success = false,
+                errorType = "AuthenticationException",
+                message = authEx.Message,
+                innerMessage = authEx.InnerException?.Message
+            });
+        }
+        catch (SmtpCommandException cmdEx)
+        {
+            _logger.LogError(cmdEx, "SMTP Command error");
+            return Ok(new
+            {
+                success = false,
+                errorType = "SmtpCommandException",
+                statusCode = cmdEx.StatusCode.ToString(),
+                errorCode = cmdEx.ErrorCode.ToString(),
+                message = cmdEx.Message
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "SMTP error");
+            return Ok(new
+            {
+                success = false,
+                errorType = ex.GetType().Name,
+                message = ex.Message,
+                innerMessage = ex.InnerException?.Message
+            });
+        }
+    }
+}
